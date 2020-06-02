@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
     click.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            new Oxford().execute(dictionaryEntries());
+            letterGenerator.letterGen();
+            //new Oxford().execute(dictionaryEntries());
         }
     });
 }
