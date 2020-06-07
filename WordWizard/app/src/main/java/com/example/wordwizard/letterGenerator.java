@@ -1,17 +1,20 @@
 package com.example.wordwizard;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.Button;
 
 import java.util.Arrays;
 
-public class letterGenerator {
+public class letterGenerator{
 
     //public static void main (String[] args){
-    public static void letterGen(){
+    public static String[] letterGen(String[] z ){
         int[] num = new int[16];
         int min = 65;
         int max = 90;
         int vowels = 0;
-        //added to test the code Hailey added
-        String test = "";
+
         for (int i = 0; i < num.length; i++){
             int j = 0;
             j = (int) ((Math.random()*((max-min)+1))+min);
@@ -23,15 +26,16 @@ public class letterGenerator {
 
             char c = (char)j;
             //added to test the code Hailey added
-            test = test + c;
+            z[i] = Character.toString(c);
+
             //System.out.println(c);
         }
         if (vowels<2) {
-            //System.out.println("Not enough vowels");
+            letterGen(z);
         }
         //System.out.println("There are " + vowels + " vowels.");
         //System.out.println(Arrays.toString(num));
         //System.out.println(num.length);
-        MainActivity.dataView.setText(test);
+        return z;
     }
 }

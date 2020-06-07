@@ -10,16 +10,29 @@
     android:text="Test"
     android:layout_marginBottom="10dp"
     android:id="@+id/btnTest"/>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/btnTest">
+        android:layout_height="97dp"
+        android:layout_below="@id/btnTest"
+        android:layout_marginTop="0dp"
+        android:id="@+id/scrollView1">
+
         <TextView
+            android:id="@+id/tvData"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/tvData"
+            android:hint="Text Place"
             android:padding="5dp"
-            android:textSize="24sp"
-            android:hint="Text Place"/>
+            android:textSize="24sp" />
     </ScrollView>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Game"
+        android:onClick="newGame"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/btnNewGame"
+        android:layout_below="@id/scrollView1"/>
+
 </RelativeLayout>

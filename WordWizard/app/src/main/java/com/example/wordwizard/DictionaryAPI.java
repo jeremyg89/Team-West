@@ -14,6 +14,7 @@ import java.nio.Buffer;
 
 public class DictionaryAPI extends AsyncTask<String, Integer, String> {
 
+    //code to connect to the Webster API
     @Override
     protected String doInBackground(String... params) {
 
@@ -38,6 +39,7 @@ public class DictionaryAPI extends AsyncTask<String, Integer, String> {
             return e.toString();
         }
     }
+    //code to connect to the Oxford API
     /*
     @Override
     protected String doInBackground(String... params) {
@@ -70,6 +72,7 @@ public class DictionaryAPI extends AsyncTask<String, Integer, String> {
         }
     }
 */
+    //code for the results of the word check using the Webster API
     @Override
     protected void onPostExecute(String result){
         super.onPostExecute(result);
@@ -85,6 +88,7 @@ public class DictionaryAPI extends AsyncTask<String, Integer, String> {
             NewGame.word = "";
         }
     }
+    //code for the results of the word check using the Oxford API
     /*
    @Override
     protected void onPostExecute(String result){
