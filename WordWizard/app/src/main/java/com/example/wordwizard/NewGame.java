@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +17,8 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
 
     //string array to hold the random letters
     String[] randomLetters = new String[16];
+    private static final int NUM_ROWS = 4;
+    private static final int NUM_COL = 4;
     //used to store the generate word
     public static String word = "";
 
@@ -31,24 +35,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_new_game);
         //assign display TextView
         currentWord = findViewById(R.id.currentWord);
-        //generating the random letters
-        letterGenerator.letterGen(randomLetters);
-        int gridID;
-        //loop to create and populate the buttons with random letters
-        for (int i = 0; i < randomLetters.length; i++){
-            //section of the grid to create the button
-            gridID = getResources().getIdentifier("grid"+ (i + 1), "id", getPackageName());
-            LinearLayout layout = (LinearLayout) findViewById(gridID);
-
-            //creates the button it the selected grid location
-            Button btnTag = new Button(this);
-            btnTag.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            btnTag.setId(i);
-            btnTag.setText(randomLetters[i]);
-            layout.addView(btnTag);
-            //creates a on click for each button created
-            btnTag.setOnClickListener(this);
-        }
+       populateGrid();
     }
 
     @Override
@@ -64,6 +51,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                     if (wordCount <= 16) {
                         //add the letter to the word
                         word = word + randomLetters[v.getId()];
+                        v.setEnabled(false);
                         wordCount++;
                         //display the current letter selection
                         currentWord.setText(word);
@@ -78,11 +66,37 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                     else {
                         wordCount = 0;
                         new WordCheck().wordCheck(word);
+                        for (int i = 0; i < 15; i++){
+                            Button btn = findViewById(i);
+                            btn.setEnabled(true);
+                        }
                     }
                 }
                 click = 0;
             }
         }, 200);
 
+    }
+    private void populateGrid(){
+        letterGenerator.letterGen(randomLetters);
+        TableLayout table = (TableLayout) findViewById(R.id.tableGrid);
+        int count = 0;
+        for (int row = 0; row < NUM_ROWS; row++){
+            TableRow tableROW = new TableRow(this);
+            tableROW.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 1.0f));
+            table.addView(tableROW);
+            for (int col = 0; col < NUM_COL; col++){
+
+                Button button = new Button(this);
+                button.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 1.0f));
+                button.setId(count);
+                button.setText(randomLetters[count].toString());
+                button.setBackgroundResource(R.drawable.ic_ww_btn_grid_a);
+
+                button.setOnClickListener(this);
+                count++;
+                tableROW.addView(button);
+            }
+        }
     }
 }
