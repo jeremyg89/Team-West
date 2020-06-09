@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -36,7 +37,9 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_new_game);
         //assign display TextView
         currentWord = findViewById(R.id.currentWord);
-       populateGrid();
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.newGameLayout);
+        relativeLayout.setOnClickListener(this);
+        populateGrid();
     }
 
     @Override
@@ -93,12 +96,12 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 button.setId(count);
                 button.setText(randomLetters[count].toString());
                 button.setBackgroundResource(R.drawable.ic_ww_btn_grid_a);
+                button.setPadding(0,0,0,0);
 
                 button.setOnClickListener(this);
                 count++;
                 tableROW.addView(button);
             }
         }
-        table.setOnClickListener(this);
     }
 }

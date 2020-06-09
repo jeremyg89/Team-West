@@ -1,21 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context=".NewGame">
+    tools:context=".NewGame"
+    android:id="@+id/newGameLayout">
+
+    <ImageView
+        android:id="@+id/img_View"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="false"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/ic_ww_logo_wordwizard" />
+
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:id="@+id/currentWord"/>
+        android:id="@+id/currentWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_View"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/ww_word_platen"
+        android:gravity="center_vertical"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        tools:ignore="RtlCompat" />
+
     <TableLayout
         android:id="@+id/tableGrid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/currentWord"
-        android:stretchColumns="*"/>
-</LinearLayout>
+        android:layout_marginBottom="100dp"
+        android:stretchColumns="*" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/tableGrid" />
+</RelativeLayout>
