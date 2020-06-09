@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Layout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -66,7 +67,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                     else {
                         wordCount = 0;
                         new WordCheck().wordCheck(word);
-                        for (int i = 0; i < 15; i++){
+                        for (int i = 0; i < 16; i++){
                             Button btn = findViewById(i);
                             btn.setEnabled(true);
                         }
@@ -98,5 +99,6 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 tableROW.addView(button);
             }
         }
+        table.setOnClickListener(this);
     }
 }
