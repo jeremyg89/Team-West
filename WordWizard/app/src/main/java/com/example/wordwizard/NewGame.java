@@ -82,7 +82,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 }
                 click = 0;
             }
-        }, 500);
+        }, 200);
 
     }
 }
