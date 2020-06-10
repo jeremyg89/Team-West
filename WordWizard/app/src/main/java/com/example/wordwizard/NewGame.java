@@ -57,9 +57,11 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 if (click == 1) {
                     if (wordCount <= 16 ) {
                         //add the letter to the word
-                        if (v.getId() <= 16) {
+                        if (v.getId() <= 16) { // only allows a letter to be added, if the id isn't outside of the button id's it will not do anything
                             word = word + randomLetters[v.getId()];
+                            //disables the button selected
                             v.setEnabled(false);
+                            v.setBackgroundResource(R.drawable.ic_ww_btn_grid_b);
                             wordCount++;
                             //display the current letter selection
                             currentWord.setText(word);
@@ -75,9 +77,11 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                     else {
                         wordCount = 0;
                         new WordCheck().wordCheck(word);
+                        //loop to re-enable all the disabled buttons
                         for (int i = 0; i < 16; i++){
                             Button btn = findViewById(i);
                             btn.setEnabled(true);
+                            btn.setBackgroundResource(R.drawable.ic_ww_btn_grid_a);
                         }
                     }
                 }

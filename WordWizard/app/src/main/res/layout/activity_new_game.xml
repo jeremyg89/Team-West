@@ -15,36 +15,94 @@
         android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="false"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="60dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/ic_ww_logo_wordwizard" />
-
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="20dp"
+        android:text="Time: "
+        android:textSize="18dp"/>
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="50dp"
+        android:text="Score: "
+        android:textSize="18dp"/>
+    <TextView
+        android:id="@+id/currentTime"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="20dp"
+        android:text="TIME"
+        android:textSize="18dp"/>
+    <TextView
+        android:id="@+id/currentScore"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="50dp"
+        android:text="POINTS"
+        android:textSize="18dp"/>
+    <ImageView
+        android:id="@+id/img_wizard"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_ww_icon_wizardhat" />
+    <ImageView
+        android:id="@+id/img_xout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/ic_ww_btn_xout_ball"/>
+    <ImageView
+        android:id="@+id/img_sound"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/ic_ww_btn_sound_owl"/>
     <TextView
         android:id="@+id/currentWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/img_View"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="2dp"
         android:background="@drawable/ww_word_platen"
         android:gravity="center_vertical"
         android:textAlignment="center"
-        android:textSize="20dp"
+        android:textSize="16dp"
         tools:ignore="RtlCompat" />
 
     <TableLayout
         android:id="@+id/tableGrid"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/currentWord"
-        android:layout_marginBottom="100dp"
-        android:stretchColumns="*" />
+        android:layout_height="wrap_content"
+        android:layout_above="@id/img_View"
+        android:layout_marginTop="188dp"
+        android:layout_marginBottom="0dp"
+        android:stretchColumns="*"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_below="@id/tableGrid" />
+        android:layout_below="@id/img_View" />
 </RelativeLayout>
