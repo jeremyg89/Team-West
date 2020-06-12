@@ -9,6 +9,7 @@
     tools:context=".NewGame"
     android:id="@+id/newGameLayout">
 
+
     <ImageView
         android:id="@+id/img_View"
         android:layout_width="200dp"
@@ -58,7 +59,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/ic_ww_icon_wizardhat" />
-    <ImageView
+    <ImageButton
         android:id="@+id/img_xout"
         android:layout_width="40dp"
         android:layout_height="40dp"

@@ -77,10 +77,16 @@ public class DictionaryAPI extends AsyncTask<String, Integer, String> {
     protected void onPostExecute(String result){
         super.onPostExecute(result);
         //write the results to the textview will later just show that the word is not real
-        if (result.contains("[{\"meta\":"))
+        validWord(result);
+    }
+    private void validWord(String Word){
+        if (Word.contains("[{\"meta\":"))
         {
             NewGame.currentWord.setText(NewGame.word + " is a real word. Points Points Points.");
+            NewGame.scoreCheck(Word);
             NewGame.word = "";
+        }
+        else if(Word.contains("Word is required.")){
         }
         else
         {
@@ -88,24 +94,5 @@ public class DictionaryAPI extends AsyncTask<String, Integer, String> {
             NewGame.word = "";
         }
     }
-    //code for the results of the word check using the Oxford API
-    /*
-   @Override
-    protected void onPostExecute(String result){
-        super.onPostExecute(result);
-        //write the results to the textview will later just show that the word is not real
-        if (result.contains("java.io.FileNotFoundException: https://od-api.oxforddictionaries.com/api/v2/lemmas/en/"))
-        {
-            NewGame.currentWord.setText("Not a real word.");
-            NewGame.word = "";
-        }
-        else
-        {
-            NewGame.currentWord.setText(NewGame.word + " is a real word. Points Points Points.");
-            NewGame.word = "";
-        }
-    }
-
-     */
 }
 
