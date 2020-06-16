@@ -11,7 +11,8 @@
         android:background="@drawable/ic_ww_logo_wordwizard"
         android:roundIcon="@drawable/ic_ww_icon_wizardhat"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:screenOrientation="portrait">
         <activity android:name=".NewGame"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>

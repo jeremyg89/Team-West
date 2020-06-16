@@ -44,7 +44,6 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
     public static TextView currentWord;
 
 
-    boolean doubleTap = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +53,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         //assign display TextView
         currentWord = findViewById(R.id.currentWord);
         scoreView = findViewById(R.id.currentScore);
-        
+
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.newGameLayout);
         relativeLayout.setOnClickListener(this);
 
@@ -114,6 +113,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                             btn.setBackgroundResource(R.drawable.ic_ww_btn_grid_a);
                         }
                     }
+
                 }
                 click = 0;
             }
