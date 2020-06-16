@@ -35,6 +35,9 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
     static int TotalScore = 0;
     TextView scoreView;
 
+    //current word points
+    static int currentPoints;
+
     //used to check current count of words
     int wordCount = 0;
 
@@ -100,7 +103,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 {
                     if (wordCount < 3)
                     {
-                        //place holder to make sure nothing happens when less than 3 letters are selected
+                        NewGame.currentWord.setText("Too short. Must be at least 3 letters!" );
                     }
                     else {
                         wordCount = 0;
@@ -174,5 +177,6 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         }
         //add the new score onto the total score
         TotalScore = TotalScore + Score;
+        currentPoints = Score;
     }
 }
