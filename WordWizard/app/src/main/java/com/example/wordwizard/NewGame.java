@@ -22,6 +22,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Time;
+
 public class NewGame extends AppCompatActivity implements View.OnClickListener{
     //string array to hold the random letters
     String[] randomLetters = new String[16];
@@ -45,6 +47,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
     int click = 0;
 
     public static TextView currentWord;
+    public static TextView currentTimer;
 
 
     @Override
@@ -56,6 +59,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         //assign display TextView
         currentWord = findViewById(R.id.currentWord);
         scoreView = findViewById(R.id.currentScore);
+        currentTimer = findViewById(R.id.currentTime);
 
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.newGameLayout);
         relativeLayout.setOnClickListener(this);
@@ -73,6 +77,8 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
             }
         });
         populateGrid();
+        //star the timer
+        new Timer().startClock();
     }
     @Override
     public void onClick(final View v) {
