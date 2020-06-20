@@ -9,12 +9,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Layout;
 import android.view.GestureDetector;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TableLayout;
@@ -64,21 +66,27 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.newGameLayout);
         relativeLayout.setOnClickListener(this);
 
-        //this creates an onclick listener for the xout image to return to the start menu
-        ImageButton btnReset = (ImageButton) findViewById(R.id.img_xout);
-        btnReset.setOnClickListener(new View.OnClickListener(){
+        //popup Menu button
+        ImageButton btnMenu = (ImageButton) findViewById(R.id.img_View);
+        btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                //changes the active activity view to MainActivity
-                startActivity(new Intent(NewGame.this, MainActivity.class));
-                //reset the values
-                TotalScore = 0;
-                word = "";
+            public void onClick(View vMenu) {
+                Intent i = new Intent(getApplicationContext(), PopUp.class);
+                startActivity(i);
+            }
+        });
+
+        //this creates an onclick listener for the xout image to return to the start menu
+        ImageButton imgReset = (ImageButton) findViewById(R.id.img_xout);
+        imgReset.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View vReset){
+                closeGame();
             }
         });
         populateGrid();
         //star the timer
-        new Timer().startClock();
+        new Timer().createClock();
     }
     @Override
     public void onClick(final View v) {
@@ -184,5 +192,12 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         //add the new score onto the total score
         TotalScore = TotalScore + Score;
         currentPoints = Score;
+    }
+    public void closeGame(){
+        //reset the values
+        TotalScore = 0;
+        word = "";
+        //close the current activity
+        finish();
     }
 }

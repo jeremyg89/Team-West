@@ -10,7 +10,7 @@
     android:id="@+id/newGameLayout">
 
 
-    <ImageView
+    <ImageButton
         android:id="@+id/img_View"
         android:layout_width="200dp"
         android:layout_height="80dp"
