@@ -86,6 +86,7 @@ public class DictionaryAPI extends AsyncTask<String, Integer, String> {
             NewGame.scoreCheck(Word);
             NewGame.currentWord.setText(NewGame.word + " is a real word. " + NewGame.currentPoints + " points!");
             NewGame.word = "";
+            NewGame.currentScore.setText(Integer.toString(NewGame.TotalScore));
         }
         else if(Word.contains("Word is required.")){
         }
