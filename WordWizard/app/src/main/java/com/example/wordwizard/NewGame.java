@@ -73,6 +73,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onClick(View vMenu) {
                 Intent i = new Intent(getApplicationContext(), PopUp.class);
+                new Timer().pauseClock();
                 startActivity(i);
             }
         });
@@ -136,7 +137,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 }
                 click = 0;
             }
-        }, 200);
+        }, 180);
 
     }
     private void populateGrid(){
@@ -201,6 +202,12 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         word = "";
         currentWord.setText(word);
         currentScore.setText(Integer.toString(TotalScore));
+        //loop to re-enable all the disabled buttons
+        for (int i = 0; i < 16; i++){
+            Button btn = findViewById(i);
+            btn.setEnabled(true);
+            btn.setBackgroundResource(R.drawable.ic_ww_btn_grid_a);
+        }
         //close the current activity
         finish();
     }

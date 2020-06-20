@@ -41,6 +41,7 @@ public class PopUp extends Activity {
             public void onClick(View vMenuNew) {
                 Intent i = new Intent(PopUp.this, NewGame.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                new Timer().stopClock();
                 //finish();
                 startActivity(i);
             }
@@ -48,6 +49,7 @@ public class PopUp extends Activity {
         btnMenuClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vMenuClose) {
+                new Timer().createClock();
                 finish();
             }
         });
