@@ -31,7 +31,7 @@ public class PopUp extends Activity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vMenuRest) {
-                new NewGame().TotalScore = 0;
+                new NewGame().closeGame();
                 new Timer().createClock();
                 finish();
             }

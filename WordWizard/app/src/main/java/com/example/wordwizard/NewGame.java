@@ -199,6 +199,8 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         //reset the values
         TotalScore = 0;
         word = "";
+        currentWord.setText(word);
+        currentScore.setText(Integer.toString(TotalScore));
         //close the current activity
         finish();
     }

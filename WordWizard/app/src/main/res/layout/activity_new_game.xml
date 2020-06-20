@@ -44,14 +44,15 @@
         android:layout_marginTop="20dp"
         android:text="TIME"
         android:textSize="18dp"/>
+
     <TextView
         android:id="@+id/currentScore"
         android:layout_width="60dp"
         android:layout_height="20dp"
         android:layout_marginLeft="210dp"
         android:layout_marginTop="50dp"
-        android:text="POINTS"
-        android:textSize="18dp"/>
+        android:text="0"
+        android:textSize="18dp" />
     <ImageView
         android:id="@+id/img_wizard"
         android:layout_width="70dp"
