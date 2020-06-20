@@ -36,21 +36,26 @@
         android:layout_marginTop="50dp"
         android:text="Score: "
         android:textSize="18dp"/>
+
     <TextView
         android:id="@+id/currentTime"
         android:layout_width="60dp"
-        android:layout_height="20dp"
+        android:layout_height="25dp"
         android:layout_marginLeft="210dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/ic_ww_btn_rec_md"
+        android:paddingLeft="4dp"
         android:text="TIME"
-        android:textSize="18dp"/>
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/currentScore"
         android:layout_width="60dp"
-        android:layout_height="20dp"
+        android:layout_height="25dp"
         android:layout_marginLeft="210dp"
         android:layout_marginTop="50dp"
+        android:background="@drawable/ic_ww_btn_rec_md"
+        android:paddingLeft="4dp"
         android:text="0"
         android:textSize="18dp" />
     <ImageView
