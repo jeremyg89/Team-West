@@ -50,6 +50,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
 
     public static TextView currentWord;
     public static TextView currentTimer;
+    public static TextView currentScore;
 
 
     @Override
@@ -60,7 +61,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_new_game);
         //assign display TextView
         currentWord = findViewById(R.id.currentWord);
-        scoreView = findViewById(R.id.currentScore);
+        currentScore = findViewById(R.id.currentScore);
         currentTimer = findViewById(R.id.currentTime);
 
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.newGameLayout);
@@ -85,7 +86,8 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
             }
         });
         populateGrid();
-        //star the timer
+
+        //start the timer
         new Timer().createClock();
     }
     @Override
