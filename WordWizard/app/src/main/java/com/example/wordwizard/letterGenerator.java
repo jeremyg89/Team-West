@@ -10,7 +10,11 @@ public class letterGenerator{
 
     //public static void main (String[] args){
     public static String[] letterGen(String[] z ){
+
+        //set number of items
         int[] num = new int[16];
+
+        //set min item equal to lowest char number in ascii
         int min = 65;
         int max = 90;
         int vowels = 0;
