@@ -77,9 +77,10 @@ public class DictionaryAPI extends AsyncTask<String, Integer, String> {
     protected void onPostExecute(String result){
         super.onPostExecute(result);
         //write the results to the textview will later just show that the word is not real
-        validWord(result);
+        WordCheck.validWord(result);
+        //validWord(result);
     }
-    private void validWord(String Word){
+    /*private void validWord(String Word){
         if (Word.contains("[{\"meta\":"))
         {
             //int points = NewGame.;
@@ -95,6 +96,6 @@ public class DictionaryAPI extends AsyncTask<String, Integer, String> {
             NewGame.currentWord.setText("Not a real word.");
             NewGame.word = "";
         }
-    }
+    }*/
 }
 

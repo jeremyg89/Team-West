@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Time;
+import java.util.ArrayList;
 
 public class NewGame extends AppCompatActivity implements View.OnClickListener{
     //string array to hold the random letters
@@ -34,6 +35,8 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
 
     //used to store the generate word
     public static String word = "";
+    public static ArrayList<String> usedwords = new ArrayList<String>();
+
 
     //Score
     static int TotalScore = 0;
@@ -137,7 +140,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 }
                 click = 0;
             }
-        }, 180);
+        }, 200);
 
     }
     private void populateGrid(){
