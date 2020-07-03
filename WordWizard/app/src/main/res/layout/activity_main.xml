@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.wordwizard.MainActivity">
+    tools:context="com.example.wordwizard.MainActivity"
+    android:background="@drawable/ic_ww_background"
+    >
 
     <ImageView
         android:id="@+id/img_View"
@@ -11,9 +13,8 @@
         android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="false"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="80dp"
         android:layout_marginRight="60dp"
         android:background="@drawable/ic_ww_logo_wordwizard"></ImageView>
 
@@ -21,19 +22,26 @@
         android:id="@+id/btnTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/img_View"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Test" />
+        android:text="Sign Up"
+        android:textSize="12sp" />
 
     <Button
+        android:id="@+id/btnNewGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Game"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="164dp"
+        android:layout_marginLeft="164dp"
+        android:layout_marginEnd="151dp"
+        android:layout_marginRight="151dp"
+        android:layout_marginBottom="45dp"
         android:onClick="newGame"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/btnNewGame"
-        android:layout_below="@id/btnTest"/>
+        android:text="Enter" />
 
 
 </RelativeLayout>
