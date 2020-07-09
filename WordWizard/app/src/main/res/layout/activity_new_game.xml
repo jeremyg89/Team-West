@@ -7,7 +7,8 @@
     android:orientation="vertical"
     android:weightSum="10"
     tools:context=".NewGame"
-    android:id="@+id/newGameLayout">
+    android:id="@+id/newGameLayout"
+    android:background="@drawable/ic_ww_grid_background">
 
 
     <ImageButton
@@ -21,66 +22,63 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="60dp"
         android:layout_marginBottom="80dp"
-        android:background="@drawable/ic_ww_logo_wordwizard" />
+        android:background="@drawable/ic_ww_logo_primary_logo" />
     <TextView
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="160dp"
         android:layout_marginTop="20dp"
         android:text="Time: "
+        android:textColor="#FFFFFF"
         android:textSize="18dp"/>
     <TextView
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="160dp"
         android:layout_marginTop="50dp"
         android:text="Score: "
+        android:textColor="#FFFFFF"
         android:textSize="18dp"/>
 
     <TextView
         android:id="@+id/currentTime"
         android:layout_width="60dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="210dp"
+        android:layout_marginLeft="220dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/ic_ww_btn_rec_md"
         android:paddingLeft="4dp"
         android:text="TIME"
+        android:textColor="#FFFFFF"
         android:textSize="18dp" />
 
     <TextView
         android:id="@+id/currentScore"
         android:layout_width="60dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="210dp"
+        android:layout_marginLeft="220dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/ic_ww_btn_rec_md"
+        android:textColor="#FFFFFF"
         android:paddingLeft="4dp"
         android:text="0"
         android:textSize="18dp" />
     <ImageView
         android:id="@+id/img_wizard"
-        android:layout_width="70dp"
-        android:layout_height="80dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/ic_ww_icon_wizardhat" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ic_ww_field_data_score_timer" />
     <ImageButton
         android:id="@+id/img_xout"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/ic_ww_xout_ball"/>
+        android:background="@drawable/ic_ww_btn_bat_xout"/>
+
     <ImageView
         android:id="@+id/img_sound"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:background="@drawable/ic_ww_btn_sound_owl"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_ww_btn_sound_owl" />
     <TextView
         android:id="@+id/currentWord"
         android:layout_width="wrap_content"
@@ -90,7 +88,7 @@
         android:layout_marginLeft="40dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:background="@drawable/ic_ww_word_platen"
+        android:background="@drawable/ic_ww_field_words"
         android:gravity="center_vertical"
         android:textAlignment="center"
         android:textSize="16dp"

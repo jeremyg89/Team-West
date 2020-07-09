@@ -16,15 +16,27 @@
         android:layout_marginLeft="60dp"
         android:layout_marginTop="80dp"
         android:layout_marginRight="60dp"
-        android:background="@drawable/ic_ww_logo_wordwizard"></ImageView>
+        android:background="@drawable/ic_ww_logo_primary_logo"></ImageView>
 
     <Button
-        android:id="@+id/btnTest"
+        android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Sign Up"
+        android:onClick="registerUser"
+        android:background="@drawable/ic_ww_btn_bat_sign_up"
         android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btnXout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/ic_ww_btn_bat_xout"
+        android:text="X" />
 
     <Button
         android:id="@+id/btnNewGame"
@@ -41,7 +53,8 @@
         android:layout_marginRight="151dp"
         android:layout_marginBottom="45dp"
         android:onClick="newGame"
-        android:text="Enter" />
+        android:text="Enter"
+        android:background="#00000000"/>
 
 
 </RelativeLayout>

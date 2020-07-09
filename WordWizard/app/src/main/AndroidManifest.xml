@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_ww_icon_wizardhat"
         android:label="Word Wizard"
-        android:background="@drawable/ic_ww_logo_wordwizard"
+        android:background="@drawable/ic_ww_logo_primary_logo"
         android:roundIcon="@drawable/ic_ww_icon_wizardhat"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".PopUp"></activity>
+        <activity android:name=".RegisterUser"></activity>
     </application>
 
 </manifest>

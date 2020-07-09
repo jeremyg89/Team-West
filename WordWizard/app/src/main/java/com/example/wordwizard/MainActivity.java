@@ -3,6 +3,7 @@ package com.example.wordwizard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,4 +17,6 @@ public void newGame(View v){
     //calls the NewGame activity
     startActivity(new Intent(MainActivity.this, NewGame.class));
 }
-}
+public void registerUser(View v){
+    startActivity(new Intent(MainActivity.this, RegisterUser.class));
+}}

@@ -111,7 +111,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                             word = word + randomLetters[v.getId()];
                             //disables the button selected
                             v.setEnabled(false);
-                            v.setBackgroundResource(R.drawable.ic_ww_btn_grid_b);
+                            v.setBackgroundResource(R.drawable.ic_ww_field_tile_b);
                             wordCount++;
                             //display the current letter selection
                             currentWord.setText(word);
@@ -133,7 +133,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                         for (int i = 0; i < 16; i++){
                             Button btn = findViewById(i);
                             btn.setEnabled(true);
-                            btn.setBackgroundResource(R.drawable.ic_ww_btn_grid_a);
+                            btn.setBackgroundResource(R.drawable.ic_ww_field_tile_a);
                         }
                     }
 
@@ -164,7 +164,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 button.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.01f));
                 button.setId(count);
                 button.setText(randomLetters[count].toString());
-                button.setBackgroundResource(R.drawable.ic_ww_btn_grid_a);
+                button.setBackgroundResource(R.drawable.ic_ww_field_tile_a);
                 button.setPadding(0,0,0,0);
                 button.setOnClickListener(this);
                 count++;
