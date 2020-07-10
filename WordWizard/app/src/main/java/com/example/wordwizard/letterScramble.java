@@ -1,14 +1,31 @@
 package com.example.wordwizard;
 
-public class letterScramble {
+import java.util.Random;
 
-    //generates random number between 1-8, 1-4 equals columns, 5-8 equals rows
+public class letterScramble<line> {
+
+    //generates random number between 1-4 to choose row
     int min = 1;
     int max = 4;
-    int line = (int) ((Math.random()*((max-min)+1))+min);
 
+    int line = (int) ((Math.random() * ((max - min) + 1)) + min);
 
+    public int getLine() {
+        return line;
+    }
 
+    for (int i=0; i< 4; i++){
+        getLine();
+        NewGame.row = line;
+        NewGame.col = 0;
+        int min =65;
+        int max =90;
+        int letter = (int) ((Math.random() * ((max - min) + 1)) + min);
+        char l = (char)letter;
+        NewGame.col = col++;
+    }
+
+    }
 
 
 }
