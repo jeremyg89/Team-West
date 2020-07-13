@@ -14,6 +14,9 @@
         android:theme="@style/AppTheme"
         android:screenOrientation="portrait">
         <activity android:name=".NewGame"></activity>
+        <activity android:name=".GameMenu"></activity>
+        <activity android:name=".GameResults"></activity>
+        <activity android:name=".Timer"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

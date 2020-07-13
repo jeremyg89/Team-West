@@ -32,7 +32,7 @@ public class PopUp extends Activity {
             @Override
             public void onClick(View vMenuRest) {
                 new NewGame().closeGame();
-                new Timer().createClock();
+                new Timer(PopUp.this).createClock();
                 finish();
             }
         });
@@ -41,7 +41,7 @@ public class PopUp extends Activity {
             public void onClick(View vMenuNew) {
                 Intent i = new Intent(PopUp.this, NewGame.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                new Timer().stopClock();
+                new Timer(PopUp.this).stopClock();
                 //finish();
                 startActivity(i);
             }
@@ -49,7 +49,7 @@ public class PopUp extends Activity {
         btnMenuClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vMenuClose) {
-                new Timer().createClock();
+                new Timer(PopUp.this).createClock();
                 finish();
             }
         });

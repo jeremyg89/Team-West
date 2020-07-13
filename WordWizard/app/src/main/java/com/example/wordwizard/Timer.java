@@ -1,5 +1,9 @@
 package com.example.wordwizard;
 
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
@@ -10,11 +14,17 @@ import java.util.Locale;
 
 public class Timer extends AppCompatActivity {
 
-    private static final long START_TIME_MILLIS = 180000;
+    private static final long START_TIME_MILLIS = 6000;
     private static long TIME_LEFT_MILLIS = START_TIME_MILLIS;
 
     private static CountDownTimer countDownTimer;
     private static boolean timerRunning;
+    private Activity mActivity;
+
+    public Timer(Activity activity){
+        super();
+        mActivity = activity;
+    }
 
     public void pauseClock(){
         //cancels the timer, but the value is stored in the TIME_LEFT_MILLIS variable
@@ -46,8 +56,11 @@ public class Timer extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                timerRunning = false;
+                finish();
                 //need to add the endgame view or call here
+                Intent startIntent = new Intent(mActivity,  GameResults.class);
+                startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mActivity.startActivity(startIntent);
             }
         }.start();
         timerRunning = true;

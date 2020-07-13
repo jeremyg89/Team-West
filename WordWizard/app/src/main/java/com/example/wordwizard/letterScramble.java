@@ -1,9 +1,13 @@
 package com.example.wordwizard;
 
+import android.widget.Button;
+
+import androidx.annotation.ContentView;
+
 import java.util.Random;
 
 public class letterScramble<line> {
-    int line =0;
+    int line = 0;
     char l;
 
     //generates random number between 1-4 to choose row
@@ -16,15 +20,17 @@ public class letterScramble<line> {
         return line;
     }
 
-    public int getChar(){
+    public char getChar() {
         int min = 65;
         int max = 90;
         int letter = (int) ((Math.random() * ((max - min) + 1)) + min);
         char l = (char) letter;
         return l;
     }
-    public int chooseButton(){
-        switch (line){
+
+   /* public void chooseButton() {
+
+        switch (line) {
             case 1:
                 NewGame.btn(1);
                 break;
@@ -39,20 +45,11 @@ public class letterScramble<line> {
                 break;
 
 
-            for (int i=0; i< 4; i++) {
+            for (int i = 0; i < 4; i++) {
                 int x = l;
                 NewGame.btn(x);
                 x++;
-
-
+            }
         }
-
-
-    }
-    
-    }
-
-    }
-
-
+    }*/
 }

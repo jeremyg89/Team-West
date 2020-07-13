@@ -3,6 +3,7 @@ package com.example.wordwizard;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 public class NewGame extends AppCompatActivity implements View.OnClickListener{
+    private static Activity activity;
     //string array to hold the random letters
     String[] randomLetters = new String[16];
     private static final int NUM_ROWS = 4;
@@ -76,7 +78,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onClick(View vMenu) {
                 Intent i = new Intent(getApplicationContext(), PopUp.class);
-                new Timer().pauseClock();
+                new Timer(NewGame.this).pauseClock();
                 startActivity(i);
             }
         });
@@ -92,7 +94,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         populateGrid();
 
         //start the timer
-        new Timer().createClock();
+        new Timer(NewGame.this).createClock();
     }
     @Override
     public void onClick(final View v) {
@@ -201,6 +203,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
     }
     public void closeGame(){
         //reset the values
+        finish();
         TotalScore = 0;
         word = "";
         currentWord.setText(word);
@@ -211,7 +214,48 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
             btn.setEnabled(true);
             btn.setBackgroundResource(R.drawable.ic_ww_btn_grid_a);
         }
+        new Timer(NewGame.this).stopClock();
         //close the current activity
-        finish();
+        //finish();
+    }
+    public void changeRow() {
+        letterScramble x = new letterScramble();
+        int line = x.getLine();
+        int i = 0;
+        Button btn;
+        switch (line) {
+            case 1:
+                i = 0;
+                for (int z = 0; z < 4; z++) {
+                    btn = findViewById(i);
+                    btn.setText(Character.toString(x.getChar()));
+                    i++;
+                }
+                break;
+            case 2:
+                i = 3;
+                for (int z = 0; z < 4; z++) {
+                    btn = findViewById(i);
+                    btn.setText(Character.toString(x.getChar()));
+                    i++;
+                }
+                break;
+            case 3:
+                i = 8;
+                for (int z = 0; z < 4; z++) {
+                    btn = findViewById(i);
+                    btn.setText(Character.toString(x.getChar()));
+                    i++;
+                }
+                break;
+            case 4:
+                i = 12;
+                for (int z = 0; z < 4; z++) {
+                    btn = findViewById(i);
+                    btn.setText(Character.toString(x.getChar()));
+                    i++;
+                }
+                break;
+        }
     }
 }
