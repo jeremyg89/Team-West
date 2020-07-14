@@ -109,7 +109,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/ic_ww_btn_menu_tutorial"
-                android:layout_span="1"/>
+                android:layout_span="1"
+                android:onClick="menuTutorial"/>
             <Button
                 android:id="@+id/btnGameStats"
                 android:layout_width="match_parent"
@@ -125,7 +126,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/ic_ww_btn_menu_account"
-                android:layout_span="1"/>
+                android:layout_span="1"
+                android:onClick="menuAccount"/>
             <Button
                 android:id="@+id/btnGameFX"
                 android:layout_width="match_parent"
@@ -138,6 +140,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_ww_logo_primary_logo"
-        android:layout_below="@+id/gridMenu"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"
         android:layout_centerHorizontal="true"/>
 </RelativeLayout>

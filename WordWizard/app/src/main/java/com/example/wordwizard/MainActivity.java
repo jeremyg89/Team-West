@@ -20,19 +20,18 @@ public void enterGame(View v){
     //calls the NewGame activity
     startActivity(new Intent(MainActivity.this, GameMenu.class));
 }
-public void registerUser(View v){
-            Intent i = new Intent(getApplicationContext(), RegisterUser.class);
+public void signIn(View v){
+            Intent i = new Intent(getApplicationContext(), PopSignIn.class);
             startActivity(i);
+            overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up);
     //startActivity(new Intent(MainActivity.this, RegisterUser.class));
 }
-public void closeGame(View v){
+public void closeApp(View v){
     finish();
-    /*Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+    Intent homeIntent = new Intent(Intent.ACTION_MAIN);
     homeIntent.addCategory( Intent.CATEGORY_HOME );
     homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    startActivity(homeIntent);*/
-    //finish();
+    startActivity(homeIntent);
     System.exit(0);
-    ActivityCompat.finishAffinity(this);
 }
 }

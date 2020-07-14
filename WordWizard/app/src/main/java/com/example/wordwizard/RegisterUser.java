@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.DisplayMetrics;
 import android.util.Patterns;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -42,22 +43,18 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
           super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_registration);
 
-          Button btnClose = findViewById(R.id.btnRegXout);
-          btnClose.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                    finish();
-               }
-          });
-
           //create the display menu
           DisplayMetrics dm = new DisplayMetrics();
           getWindowManager().getDefaultDisplay().getMetrics(dm);
+          WindowManager.LayoutParams wlp = getWindow().getAttributes();
+
 
           int width = dm.widthPixels;
           int height = dm.heightPixels;
+          //change the size and location of the window
+          wlp.gravity = Gravity.TOP;
+          getWindow().setLayout((int)(width), (int)(height*.6));
 
-          getWindow().setLayout((int)(width), (int) (height));
 
           editTextEmail = findViewById(R.id.email);
           editTextFirstname = findViewById(R.id.firstName);

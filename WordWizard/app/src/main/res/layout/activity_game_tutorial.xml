@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_ww_plat_deep_red">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/ic_ww_icon_turorial" />
+
+    <TextView
+        android:id="@+id/lblTutorial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="30dp"
+        android:text="Tutorial"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/lbl1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:lines="3"
+        android:text="Always respect the spellbook.\n
+Play by the Wizard's commands and you too\nmay become a WordWizard!"
+        android:textColor="#ffffff"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/lblTutorial"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal" />
+    <TextView
+        android:id="@+id/lbl2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:text="1. Build words of at least three letters in length to score."
+        android:textColor="#ffffff"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/lbl1" />
+    <TextView
+        android:id="@+id/lbl3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:text="2. Select letters from any space on the game grid."
+        android:textColor="#ffffff"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/lbl2" />
+    <TextView
+        android:id="@+id/lbl4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:text="3. Double-tap the screen to submit word."
+        android:textColor="#ffffff"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/lbl3" />
+    <TextView
+        android:id="@+id/lbl5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:text="4. Letter points are awarded on the following score per letter.\n
+        1 Point for: A, D, E, H, I, L, N, O, R, S, T, U\n
+        2 Points for: B, C, F, G, M, P, W, Y\n
+        3 Points for: K, Y\n
+        4 Points for: J, Q, Z, X\n\nLength of word bonus: 1 Point is awarded for each extra letter above three letters in the length of the word."
+        android:textColor="#ffffff"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/lbl4" />
+    <TextView
+        android:id="@+id/lbl6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:text="5. Game grids are timed for 60 seconds each. There are three grids for each game for a total of 3 minutes."
+        android:textColor="#ffffff"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/lbl5" />
+    <TextView
+        android:id="@+id/lbl7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:text="6. The grid will randomly shuffle a row or column in the grid between levels."
+        android:textColor="#ffffff"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/lbl6" />
+
+</RelativeLayout>
