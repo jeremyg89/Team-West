@@ -148,6 +148,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
     private void populateGrid(){
         //grabs the random letters
         letterGenerator.letterGen(randomLetters);
+
         //fine the table layout on new game activity
         TableLayout table = (TableLayout) findViewById(R.id.tableGrid);
         //on click listener used to get the users word submission
@@ -256,6 +257,16 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                     i++;
                 }
                 break;
+        }
+    }
+    //checks if random letters exists in grid table
+    public void checkGrid(){
+        if (true){
+            String currentLetters = new String(String.valueOf(randomLetters));
+
+            String query = "SELECT Game_Number, First Grid Letters FROM grids WHERE First_Grid_Letters ='" + currentLetters + "'" ;
+            
+
         }
     }
 }
