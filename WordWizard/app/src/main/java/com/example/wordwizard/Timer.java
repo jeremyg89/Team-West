@@ -5,6 +5,7 @@ import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.CountDownTimer;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,12 +15,16 @@ import java.util.Locale;
 
 public class Timer extends AppCompatActivity {
 
-    private static final long START_TIME_MILLIS = 6000;
+    private static final long START_TIME_MILLIS = 180000;
     private static long TIME_LEFT_MILLIS = START_TIME_MILLIS;
 
     private static CountDownTimer countDownTimer;
     private static boolean timerRunning;
     private Activity mActivity;
+
+    //variables for the changerow function
+    private static int range1 = 120000;
+    private static int range2 = 121000;
 
     public Timer(Activity activity){
         super();
@@ -51,16 +56,24 @@ public class Timer extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 TIME_LEFT_MILLIS = millisUntilFinished;
+                if (millisUntilFinished >= range1 && millisUntilFinished <= range2){
+                    NewGame Test = new NewGame();
+                    Test.changeRow(mActivity);
+                    //set the variables for the next interval
+                    range1 = 60000;
+                    range2 = 61000;
+                }
                 updateTimerText();
             }
 
             @Override
             public void onFinish() {
-                finish();
                 //need to add the endgame view or call here
                 Intent startIntent = new Intent(mActivity,  GameResults.class);
                 startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 mActivity.startActivity(startIntent);
+                finish();
             }
         }.start();
         timerRunning = true;

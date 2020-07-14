@@ -14,10 +14,16 @@ public class GameMenu extends AppCompatActivity {
     }
     public void newGame(View v){
         //calls the NewGame activity
-        startActivity(new Intent(GameMenu.this, NewGame.class));
+        startActivity(new Intent(GameMenu.this, GameAffirmation.class));
     }
     public void closeMenu(View v){
         finish();
         startActivity(new Intent(GameMenu.this, MainActivity.class));
+    }
+    public void menuAccount(View v){
+        startActivity(new Intent(GameMenu.this, PopAccount.class));
+    }
+    public void menuTutorial(View v){
+        startActivity(new Intent(GameMenu.this, PopTutorial.class));
     }
 }

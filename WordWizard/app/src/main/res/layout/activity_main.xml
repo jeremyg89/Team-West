@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/img_View"
         android:layout_width="300dp"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/ic_ww_logo_primary_logo"></ImageView>
@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Sign Up"
-        android:onClick="registerUser"
-        android:background="@drawable/ic_ww_btn_bat_sign_up"
+        android:onClick="signIn"
+        android:background="@drawable/ic_ww_btn_bat_sign_in"
         android:textSize="12sp" />
 
     <Button
@@ -34,7 +34,7 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/ic_ww_btn_bat_xout"
         android:text="X"
-        android:onClick="closeGame"/>
+        android:onClick="closeApp"/>
 
     <Button
         android:id="@+id/btnNewGame"

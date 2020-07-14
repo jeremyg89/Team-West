@@ -57,7 +57,6 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
     public static TextView currentTimer;
     public static TextView currentScore;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,13 +83,13 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         });
 
         //this creates an onclick listener for the xout image to return to the start menu
-        ImageButton imgReset = (ImageButton) findViewById(R.id.img_xout);
+        /*ImageButton imgReset = (ImageButton) findViewById(R.id.imgGameXout);
         imgReset.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View vReset){
-                closeGame();
+                resetGame();
             }
-        });
+        });*/
         populateGrid();
 
         //start the timer
@@ -201,7 +200,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         TotalScore = TotalScore + Score;
         currentPoints = Score;
     }
-    public void closeGame(){
+    public void resetGame(){
         //reset the values
         finish();
         TotalScore = 0;
@@ -214,11 +213,20 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
             btn.setEnabled(true);
             btn.setBackgroundResource(R.drawable.ic_ww_btn_grid_a);
         }
+
         new Timer(NewGame.this).stopClock();
         //close the current activity
         //finish();
     }
-    public void changeRow() {
+    public void closeGame(View v){
+        finish();
+        new Timer(NewGame.this).stopClock();
+        Intent i = new Intent(NewGame.this, GameMenu.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+    }
+    public void changeRow(Activity m) {
         letterScramble x = new letterScramble();
         int line = x.getLine();
         int i = 0;
@@ -227,7 +235,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
             case 1:
                 i = 0;
                 for (int z = 0; z < 4; z++) {
-                    btn = findViewById(i);
+                    btn = m.findViewById(i);
                     btn.setText(Character.toString(x.getChar()));
                     i++;
                 }
@@ -235,7 +243,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
             case 2:
                 i = 3;
                 for (int z = 0; z < 4; z++) {
-                    btn = findViewById(i);
+                    btn = m.findViewById(i);
                     btn.setText(Character.toString(x.getChar()));
                     i++;
                 }
@@ -243,7 +251,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
             case 3:
                 i = 8;
                 for (int z = 0; z < 4; z++) {
-                    btn = findViewById(i);
+                    btn = m.findViewById(i);
                     btn.setText(Character.toString(x.getChar()));
                     i++;
                 }
@@ -251,7 +259,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
             case 4:
                 i = 12;
                 for (int z = 0; z < 4; z++) {
-                    btn = findViewById(i);
+                    btn = m.findViewById(i);
                     btn.setText(Character.toString(x.getChar()));
                     i++;
                 }

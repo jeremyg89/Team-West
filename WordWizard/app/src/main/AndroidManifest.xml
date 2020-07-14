@@ -17,6 +17,14 @@
         <activity android:name=".GameMenu"></activity>
         <activity android:name=".GameResults"></activity>
         <activity android:name=".Timer"></activity>
+        <activity android:name=".GameAffirmation"
+            android:theme="@style/AppTheme.PopAccountTheme"></activity>
+        <activity android:name=".PopAccount"
+            android:theme="@style/AppTheme.PopAccountTheme"></activity>
+        <activity android:name=".PopTutorial"
+            android:theme="@style/AppTheme.PopAccountTheme"></activity>
+        <activity android:name=".PopSignIn"
+            android:theme="@style/AppTheme.PopAccountTheme"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +32,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PopUp"></activity>
-        <activity android:name=".RegisterUser"></activity>
+        <activity android:name=".RegisterUser"
+            android:theme="@style/AppTheme.PopAccountTheme"></activity>
     </application>
 
 </manifest>

@@ -23,7 +23,7 @@
         android:layout_width="60dp"
         android:layout_height="20dp"
         android:layout_marginLeft="160dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         android:text="Time: "
         android:textColor="#FFFFFF"
         android:textSize="18dp"/>
@@ -31,7 +31,7 @@
         android:layout_width="60dp"
         android:layout_height="20dp"
         android:layout_marginLeft="160dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="90dp"
         android:text="Score: "
         android:textColor="#FFFFFF"
         android:textSize="18dp"/>
@@ -41,7 +41,7 @@
         android:layout_width="60dp"
         android:layout_height="25dp"
         android:layout_marginLeft="220dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         android:paddingLeft="4dp"
         android:text="TIME"
         android:textColor="#FFFFFF"
@@ -52,7 +52,7 @@
         android:layout_width="60dp"
         android:layout_height="25dp"
         android:layout_marginLeft="220dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="90dp"
         android:textColor="#FFFFFF"
         android:paddingLeft="4dp"
         android:text="0"
@@ -62,13 +62,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
         android:background="@drawable/ic_ww_field_data_score_timer" />
-    <ImageButton
-        android:id="@+id/img_xout"
+    <Button
+        android:id="@+id/btnGameXout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:background="@drawable/ic_ww_btn_bat_xout"/>
+        android:background="@drawable/ic_ww_btn_bat_xout"
+        android:onClick="closeGame"/>
 
     <ImageView
         android:id="@+id/img_sound"
@@ -79,9 +81,10 @@
         android:id="@+id/currentWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
+        android:layout_below="@+id/img_wizard"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:background="@drawable/ic_ww_field_words"
@@ -94,8 +97,8 @@
         android:id="@+id/tableGrid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/img_View"
-        android:layout_marginTop="188dp"
+        android:layout_below="@id/currentWord"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="0dp"
         android:stretchColumns="*"
         android:layout_marginRight="40dp"
