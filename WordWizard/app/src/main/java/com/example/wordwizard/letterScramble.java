@@ -28,6 +28,16 @@ public class letterScramble<line> {
         return l;
     }
 
+    public StringBuilder getString(){
+        for (int j = 0; j < 16; j++){
+            Button btn = btn.findViewById();
+            btn.getText();
+            StringBuilder grid2 = new StringBuilder("");
+            grid2.append(j);
+    }
+}
+
+
    /* public void chooseButton() {
 
         switch (line) {

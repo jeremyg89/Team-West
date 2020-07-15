@@ -25,12 +25,22 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NewGame extends AppCompatActivity implements View.OnClickListener{
     private static Activity activity;
@@ -236,6 +246,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         int line = x.getLine();
         int i = 0;
         Button btn;
+
         switch (line) {
             case 1:
                 i = 0;
@@ -270,35 +281,52 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 }
                 break;
         }
+
+        }
+
+
     }
     //checks if random letters exists in grid table
     public void checkGrid(){
-        if (true){
-            String currentLetters = new String(String.valueOf(randomLetters));
 
-            String query = "SELECT Game_Number, First Grid Letters FROM grids WHERE First_Grid_Letters ='" + currentLetters + "'" ;
-            if (query != null){
+        final String Grid1 = randomLetters.toString();
+        final String Grid2 = grid2;
 
 
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_REGISTER,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                String query2 = "SELECT Game_Number, Second_Grid_Letters FROM grids WHERE Second_Grid_Letters ='" + scramble1Letters + "'" ;
-                                if (query2 != null){
-                                    String query3 = "SELECT Game_Number, Third_Grid_Letters FROM grids WHERE Third_Grid_Letters ='" + scramble2Letters + "'" ;
-                                }
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.GRID_CHECK,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
 
-                            }
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                          Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @NotNull
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("First_Grid_Letters", Grid1);
+                params.put("Second_Grid_Letters", Grid2);
+                params.put("Third_Grid_Letters", Grid3);
+                return params;
             }
-            else {
-                getDatabasePath();
-                String query3 = "SELECT COUNT(*) FROM grids";
-                result++;
-            }
-
-        }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
+
+
 }
