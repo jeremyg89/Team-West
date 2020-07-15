@@ -25,14 +25,24 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public class NewGame extends AppCompatActivity implements View.OnClickListener{
+public class NewGame extends AppCompatActivity implements View.OnClickListener {
     private static Activity activity;
     //string array to hold the random letters
     public static String[] randomLetters = new String[16];
@@ -99,6 +109,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         //start the timer
         new Timer(NewGame.this).createClock();
     }
+
     @Override
     public void onClick(final View v) {
         click++;
@@ -110,7 +121,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
             public void run() {
                 //if the button has been clicked once it will add the letter to the chain
                 if (click == 1) {
-                    if (wordCount <= 16 ) {
+                    if (wordCount <= 16) {
                         //add the letter to the word
                         if (v.getId() <= 16) { // only allows a letter to be added, if the id isn't outside of the button id's it will not do anything
                             word = word + randomLetters[v.getId()];
@@ -124,18 +135,15 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                     }
                 }
                 //if a double click is detected the word will be checked using the API
-                else if (click == 2)
-                {
-                    if (wordCount < 3)
-                    {
-                        NewGame.currentWord.setText("Too short. Must be at least 3 letters!" );
-                    }
-                    else {
+                else if (click == 2) {
+                    if (wordCount < 3) {
+                        NewGame.currentWord.setText("Too short. Must be at least 3 letters!");
+                    } else {
                         wordCount = 0;
                         //check if the word is real or not
                         new WordCheck().wordCheck(word);
                         //loop to re-enable all the disabled buttons
-                        for (int i = 0; i < 16; i++){
+                        for (int i = 0; i < 16; i++) {
                             Button btn = findViewById(i);
                             btn.setEnabled(true);
                             btn.setBackgroundResource(R.drawable.ic_ww_field_tile_a);
@@ -148,7 +156,8 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         }, 200);
 
     }
-    private void populateGrid(){
+
+    private void populateGrid() {
         //grabs the random letters
         letterGenerator.letterGen(randomLetters);
 
@@ -158,12 +167,12 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         table.setOnClickListener(this);
         int count = 0;
         //loop to add four rows to the table
-        for (int row = 0; row < NUM_ROWS; row++){
+        for (int row = 0; row < NUM_ROWS; row++) {
             TableRow tableROW = new TableRow(this);
             tableROW.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.01f));
             table.addView(tableROW);
             //loop to add four columns to the table
-            for (int col = 0; col < NUM_COL; col++){
+            for (int col = 0; col < NUM_COL; col++) {
 
                 //adds a button in each x,y of the table
                 Button button = new Button(this);
@@ -171,14 +180,15 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 button.setId(count);
                 button.setText(randomLetters[count].toString());
                 button.setBackgroundResource(R.drawable.ic_ww_field_tile_a);
-                button.setPadding(0,0,0,0);
+                button.setPadding(0, 0, 0, 0);
                 button.setOnClickListener(this);
                 count++;
                 tableROW.addView(button);
             }
         }
     }
-    public static void scoreCheck(String s){
+
+    public static void scoreCheck(String s) {
         //create an array that is filled with the characters of the correct word
         char[] charArray = NewGame.word.toCharArray();
         int Score = 0;
@@ -205,7 +215,8 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         TotalScore = TotalScore + Score;
         currentPoints = Score;
     }
-    public void resetGame(){
+
+    public void resetGame() {
         //reset the values
         finish();
         TotalScore = 0;
@@ -213,7 +224,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         currentWord.setText(word);
         currentScore.setText(Integer.toString(TotalScore));
         //loop to re-enable all the disabled buttons
-        for (int i = 0; i < 16; i++){
+        for (int i = 0; i < 16; i++) {
             Button btn = findViewById(i);
             btn.setEnabled(true);
             btn.setBackgroundResource(R.drawable.ic_ww_btn_grid_a);
@@ -223,7 +234,8 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         //close the current activity
         //finish();
     }
-    public void closeGame(View v){
+
+    public void closeGame(View v) {
         //end current activity
         finish();
         //stop timer
@@ -234,11 +246,12 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
     }
+
     public void changeRow(Activity m) {
         //clear the content prior to resetting
         word = "";
         currentWord.setText(word);
-        for (int i = 0; i < 16; i++){
+        for (int i = 0; i < 16; i++) {
             Button btn = m.findViewById(i);
             btn.setEnabled(true);
             btn.setBackgroundResource(R.drawable.ic_ww_btn_grid_a);
@@ -248,6 +261,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         int line = x.getLine();
         int i = 0;
         Button btn;
+
         switch (line) {
             case 1:
                 i = 0;
@@ -286,35 +300,43 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 }
                 break;
         }
-    }}
-    //checks if random letters exists in grid table
-  /*  public void checkGrid(){
-        if (true){
-            String currentLetters = new String(String.valueOf(randomLetters));
-
-            String query = "SELECT Game_Number, First Grid Letters FROM grids WHERE First_Grid_Letters ='" + currentLetters + "'" ;
-            if (query != null){
-
-
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_REGISTER,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                String query2 = "SELECT Game_Number, Second_Grid_Letters FROM grids WHERE Second_Grid_Letters ='" + scramble1Letters + "'" ;
-                                if (query2 != null){
-                                    String query3 = "SELECT Game_Number, Third_Grid_Letters FROM grids WHERE Third_Grid_Letters ='" + scramble2Letters + "'" ;
-                                }
-
-                            }
-                        }
-
-            }
-            else {
-                getDatabasePath();
-                String query3 = "SELECT COUNT(*) FROM grids";
-                result++;
-            }
-
-        }
     }
-}*/
+}
+
+/*    //checks if random letters exists in grid table
+ //   public void checkGrid(){
+ //       final String Grid1 = randomLetters.toString();
+ //       final String Grid2 = grid2;
+   //     StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.GRID_CHECK,
+   //             new Response.Listener<String>() {
+   //                 @Override
+   //                 public void onResponse(String response) {
+   //                     try {
+  //                          JSONObject jsonObject = new JSONObject(response);
+  //                          Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+ //                       } catch (JSONException e) {
+  //                          e.printStackTrace();
+ //                       }
+ //                   }
+ //               },
+ //               new Response.ErrorListener() {
+  //                  @Override
+  //                  public void onErrorResponse(VolleyError error) {
+ //                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+ //                   }
+ //               }) {
+ //           @NotNull
+ //           @Override
+  //          protected Map<String, String> getParams() throws AuthFailureError {
+   //             Map<String, String> params = new HashMap<>();
+  //              params.put("First_Grid_Letters", Grid1);
+  //              params.put("Second_Grid_Letters", Grid2);
+  //              params.put("Third_Grid_Letters", Grid3);
+  //              return params;
+//            }
+ //       };
+  //      RequestQueue requestQueue = Volley.newRequestQueue(this);
+  //      requestQueue.add(stringRequest);
+//   }
+}
+ */

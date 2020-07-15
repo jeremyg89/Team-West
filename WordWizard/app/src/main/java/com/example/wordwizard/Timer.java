@@ -70,6 +70,10 @@ public class Timer extends AppCompatActivity {
             public void onFinish() {
                 //need to add the endgame view or call here
                 Intent startIntent = new Intent(mActivity,  GameResults.class);
+
+                //code to insert scores in DB and display
+
+
                 startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 mActivity.startActivity(startIntent);

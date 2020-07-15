@@ -7,4 +7,7 @@ public class Constants {
     public static final String URL_REGISTER = ROOT_URL + "registerUser.php";
 
     public static final String URL_SIGNIN = ROOT_URL + "userLogin.php";
+
+    public static final String GRID_CHECK = ROOT_URL + "gridVerification.php";
+
 }
