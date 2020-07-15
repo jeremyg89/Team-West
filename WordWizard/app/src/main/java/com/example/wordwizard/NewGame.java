@@ -35,7 +35,7 @@ import java.util.ArrayList;
 public class NewGame extends AppCompatActivity implements View.OnClickListener{
     private static Activity activity;
     //string array to hold the random letters
-    String[] randomLetters = new String[16];
+    public static String[] randomLetters = new String[16];
     private static final int NUM_ROWS = 4;
     private static final int NUM_COL = 4;
 
@@ -235,6 +235,15 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         startActivity(i);
     }
     public void changeRow(Activity m) {
+        //clear the content prior to resetting
+        word = "";
+        currentWord.setText(word);
+        for (int i = 0; i < 16; i++){
+            Button btn = m.findViewById(i);
+            btn.setEnabled(true);
+            btn.setBackgroundResource(R.drawable.ic_ww_btn_grid_a);
+        }
+        //change the row
         letterScramble x = new letterScramble();
         int line = x.getLine();
         int i = 0;
@@ -244,7 +253,8 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 i = 0;
                 for (int z = 0; z < 4; z++) {
                     btn = m.findViewById(i);
-                    btn.setText(Character.toString(x.getChar()));
+                    randomLetters[i] = Character.toString(x.getChar());
+                    btn.setText(randomLetters[i].toString());
                     i++;
                 }
                 break;
@@ -252,7 +262,8 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 i = 3;
                 for (int z = 0; z < 4; z++) {
                     btn = m.findViewById(i);
-                    btn.setText(Character.toString(x.getChar()));
+                    randomLetters[i] = Character.toString(x.getChar());
+                    btn.setText(randomLetters[i].toString());
                     i++;
                 }
                 break;
@@ -260,7 +271,8 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 i = 8;
                 for (int z = 0; z < 4; z++) {
                     btn = m.findViewById(i);
-                    btn.setText(Character.toString(x.getChar()));
+                    randomLetters[i] = Character.toString(x.getChar());
+                    btn.setText(randomLetters[i].toString());
                     i++;
                 }
                 break;
@@ -268,14 +280,15 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
                 i = 12;
                 for (int z = 0; z < 4; z++) {
                     btn = m.findViewById(i);
-                    btn.setText(Character.toString(x.getChar()));
+                    randomLetters[i] = Character.toString(x.getChar());
+                    btn.setText(randomLetters[i].toString());
                     i++;
                 }
                 break;
         }
-    }
+    }}
     //checks if random letters exists in grid table
-    public void checkGrid(){
+  /*  public void checkGrid(){
         if (true){
             String currentLetters = new String(String.valueOf(randomLetters));
 
@@ -304,4 +317,4 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
 
         }
     }
-}
+}*/

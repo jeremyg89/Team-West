@@ -9,7 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_ww_btn_bat_sign_up"
-        android:onClick="registerUser"/>
+        android:onClick="registerUser"
+        />
     <EditText
         android:id="@+id/editEmail"
         android:layout_width="match_parent"
@@ -20,7 +21,7 @@
         android:layout_marginTop="100dp"
         android:textAlignment="center"
         android:background="#ffffffff"
-        android:text="Email"
+        android:text="jsmith@test.net"
         android:textSize="30dp"
         android:gravity="center_horizontal" />
     <EditText
@@ -34,7 +35,7 @@
         android:layout_below="@+id/editEmail"
         android:textAlignment="center"
         android:background="#ffffffff"
-        android:text="Password"
+        android:text="youSngone2!"
         android:textSize="30dp"
         android:gravity="center_horizontal" />
     <Button
@@ -45,6 +46,7 @@
         android:layout_alignRight="@+id/editPassword"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/ic_ww_btn_func_sign_in"/>
+        android:background="@drawable/ic_ww_btn_func_sign_in"
+        android:onClick="validateSinIn"/>
 
 </RelativeLayout>

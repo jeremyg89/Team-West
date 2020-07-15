@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -30,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-public class PopSignIn extends Activity implements View.OnClickListener{
+public class PopSignIn extends AppCompatActivity implements View.OnClickListener{
     private EditText  editEmail, editPassword;
     private Button buttonSignIn;
     private ProgressDialog progressDialog;
@@ -52,6 +53,7 @@ public class PopSignIn extends Activity implements View.OnClickListener{
         wlp.gravity = Gravity.TOP;
         //set the window dimensions
         getWindow().setLayout((int)(width), (int)(height*.45));
+        buttonSignIn.setOnClickListener(this);
     }
     public void registerUser(View v){
         Intent i = new Intent(getApplicationContext(), RegisterUser.class);
@@ -67,7 +69,7 @@ public class PopSignIn extends Activity implements View.OnClickListener{
         progressDialog.setMessage("Registering user...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_REGISTER,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_SIGNIN,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -152,7 +154,7 @@ public class PopSignIn extends Activity implements View.OnClickListener{
         return false;
     }
     //pattern for the email verification
-    public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+    private static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
             "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
                     "\\@" +
                     "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
