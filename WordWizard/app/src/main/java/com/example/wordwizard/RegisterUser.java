@@ -156,7 +156,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                editTextPassword.setError("Password too weak. aA1@aA1@");
                return false;
           } else if (Password.length() > 60){
-               editTextNickname.setError("Password is too long. It must be less than 60 characters.");
+               editTextPassword.setError("Password is too long. It must be less than 60 characters.");
                return false;
           }
           else{
