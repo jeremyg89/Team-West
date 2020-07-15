@@ -26,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,6 +38,12 @@ public class PopSignIn extends AppCompatActivity implements View.OnClickListener
     private EditText  editEmail, editPassword;
     private Button buttonSignIn;
     private ProgressDialog progressDialog;
+
+    public static int id = 0;
+    public static String nickname = "";
+    public static String fname = "";
+    public static String lname = "";
+    public static String email = "";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,10 +98,20 @@ public class PopSignIn extends AppCompatActivity implements View.OnClickListener
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 
+                            //get the values form the jsonobject
+                            //jsonObject.getJSONObject(response);
+                            id = jsonObject.getInt("id");
+                            nickname = jsonObject.getString("nickname").toString();
+                            fname = jsonObject.getString("first_name").toString();
+                            lname = jsonObject.getString("last_name").toString();
+                            email = jsonObject.getString("email").toString();
+
                             Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        finish();
+                        Toast.makeText(getApplicationContext(), "Login successful.", Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {

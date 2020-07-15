@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -18,7 +19,11 @@ public class MainActivity extends AppCompatActivity {
 }
 public void enterGame(View v){
     //calls the NewGame activity
-    startActivity(new Intent(MainActivity.this, GameMenu.class));
+    if (PopSignIn.id != 0) {
+        startActivity(new Intent(MainActivity.this, GameMenu.class));
+    }else{
+        Toast.makeText(getApplicationContext(), "Please sign in or register an account.", Toast.LENGTH_LONG).show();
+    }
 }
 public void signIn(View v){
             Intent i = new Intent(getApplicationContext(), PopSignIn.class);
