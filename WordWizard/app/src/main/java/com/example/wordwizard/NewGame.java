@@ -289,47 +289,49 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
 
 
     }
-    //checks if random letters exists in grid table
-    public void checkGrid(){
+/*    //checks if random letters exists in grid table
+ //   public void checkGrid(){
 
-        final String Grid1 = randomLetters.toString();
-        final String Grid2 = grid2;
-
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.GRID_CHECK,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+ //       final String Grid1 = randomLetters.toString();
+ //       final String Grid2 = grid2;
 
 
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
+   //     StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.GRID_CHECK,
+   //             new Response.Listener<String>() {
+   //                 @Override
+   //                 public void onResponse(String response) {
 
-                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                          Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                }) {
-            @NotNull
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("First_Grid_Letters", Grid1);
-                params.put("Second_Grid_Letters", Grid2);
-                params.put("Third_Grid_Letters", Grid3);
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }
+
+   //                     try {
+  //                          JSONObject jsonObject = new JSONObject(response);
+
+  //                          Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+ //                       } catch (JSONException e) {
+  //                          e.printStackTrace();
+ //                       }
+ //                   }
+ //               },
+ //               new Response.ErrorListener() {
+  //                  @Override
+  //                  public void onErrorResponse(VolleyError error) {
+ //                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+ //                   }
+ //               }) {
+ //           @NotNull
+ //           @Override
+  //          protected Map<String, String> getParams() throws AuthFailureError {
+   //             Map<String, String> params = new HashMap<>();
+  //              params.put("First_Grid_Letters", Grid1);
+  //              params.put("Second_Grid_Letters", Grid2);
+  //              params.put("Third_Grid_Letters", Grid3);
+  //              return params;
+//            }
+ //       };
+  //      RequestQueue requestQueue = Volley.newRequestQueue(this);
+  //      requestQueue.add(stringRequest);
+ //   }
 
 
 }
+
+ */

@@ -28,7 +28,7 @@ public class letterScramble<line> {
         return l;
     }
 
-    public StringBuilder getString(){
+/*    public StringBuilder getString(){
         for (int j = 0; j < 16; j++){
             Button btn = btn.findViewById();
             btn.getText();
