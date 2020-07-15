@@ -10,9 +10,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -24,6 +25,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,7 +39,7 @@ public class PopSignIn extends AppCompatActivity implements View.OnClickListener
     private ProgressDialog progressDialog;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.pop_signin);
@@ -53,20 +55,31 @@ public class PopSignIn extends AppCompatActivity implements View.OnClickListener
         wlp.gravity = Gravity.TOP;
         //set the window dimensions
         getWindow().setLayout((int)(width), (int)(height*.45));
+
+        //popup Menu button
+        Button btnMenu = (Button) findViewById(R.id.btnSup);
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vMenu) {
+                Intent i = new Intent(getApplicationContext(), RegisterUser.class);
+                startActivity(i);
+                overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up);
+            }
+        });
+        editEmail = findViewById(R.id.editEmail);
+        editPassword = findViewById(R.id.editPassword);
+        buttonSignIn = (Button) findViewById(R.id.btnLogin);
+
+        progressDialog = new ProgressDialog(this);
+
         buttonSignIn.setOnClickListener(this);
-    }
-    public void registerUser(View v){
-        Intent i = new Intent(getApplicationContext(), RegisterUser.class);
-        startActivity(i);
-        overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up);
-        //startActivity(new Intent(MainActivity.this, RegisterUser.class));
-    }
+}
     public void login() {
         final String Email = editEmail.getText().toString().trim();
         final String Password = editPassword.getText().toString().trim();
         //final String IsActive = editTextIsactive.getText().toString().trim();
 
-        progressDialog.setMessage("Registering user...");
+        progressDialog.setMessage("Logging in...");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_SIGNIN,
@@ -167,7 +180,7 @@ public class PopSignIn extends AppCompatActivity implements View.OnClickListener
             "(?=.*[0-9])" +  //at least 1 digit
             "(?=.*[a-z])" +  //at least 1 lower case letter
             "(?=.*[A-Z])" +  //at least 1 upper case letter
-            "(?=.*[@#$%^&+=])" +  //at least 1 special character
+            "(?=.*[@#$%^&+=!])" +  //at least 1 special character
             "(?=\\S+$)" +  //no white spaces
             ".{8,}" +  //at least 8 characters
             "$");

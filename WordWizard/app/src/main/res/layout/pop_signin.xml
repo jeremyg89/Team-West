@@ -5,11 +5,10 @@
     android:background="@drawable/ic_ww_plat_deep_red_sign_in_out">
 
     <Button
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btnSup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_ww_btn_bat_sign_up"
-        android:onClick="registerUser"
         />
     <EditText
         android:id="@+id/editEmail"
@@ -39,14 +38,13 @@
         android:textSize="30dp"
         android:gravity="center_horizontal" />
     <Button
-        android:id="@+id/btnSignIn"
+        android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editPassword"
         android:layout_alignRight="@+id/editPassword"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/ic_ww_btn_func_sign_in"
-        android:onClick="validateSinIn"/>
+        android:background="@drawable/ic_ww_btn_func_sign_in"/>
 
 </RelativeLayout>
