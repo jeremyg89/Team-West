@@ -25,6 +25,10 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
+
 import java.sql.Time;
 import java.util.ArrayList;
 
@@ -276,7 +280,27 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
             String currentLetters = new String(String.valueOf(randomLetters));
 
             String query = "SELECT Game_Number, First Grid Letters FROM grids WHERE First_Grid_Letters ='" + currentLetters + "'" ;
-            
+            if (query != null){
+
+
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_REGISTER,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                String query2 = "SELECT Game_Number, Second_Grid_Letters FROM grids WHERE Second_Grid_Letters ='" + scramble1Letters + "'" ;
+                                if (query2 != null){
+                                    String query3 = "SELECT Game_Number, Third_Grid_Letters FROM grids WHERE Third_Grid_Letters ='" + scramble2Letters + "'" ;
+                                }
+
+                            }
+                        }
+
+            }
+            else {
+                getDatabasePath();
+                String query3 = "SELECT COUNT(*) FROM grids";
+                result++;
+            }
 
         }
     }
