@@ -211,6 +211,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
                 Score = Score + 4;
             }
         }
+        Score = Score + word.length();
         //add the new score onto the total score
         TotalScore = TotalScore + Score;
         currentPoints = Score;
