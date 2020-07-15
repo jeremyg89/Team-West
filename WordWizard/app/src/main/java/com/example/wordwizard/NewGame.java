@@ -234,8 +234,11 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener{
         //finish();
     }
     public void closeGame(View v){
+        //end current activity
         finish();
+        //stop timer
         new Timer(NewGame.this).stopClock();
+        //create transition intent from this activty back to the game menu
         Intent i = new Intent(NewGame.this, GameMenu.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
