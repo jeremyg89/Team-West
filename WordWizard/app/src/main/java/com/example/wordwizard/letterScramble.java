@@ -27,13 +27,13 @@ public class letterScramble<line> {
         char l = (char) letter;
         return l;
     }
-
+    //build a string with the current letters in the buttons
 /*    public StringBuilder getString(){
         for (int j = 0; j < 16; j++){
             Button btn = btn.findViewById();
             btn.getText();
             StringBuilder grid2 = new StringBuilder("");
-            grid2.append(j);
+            currentLetters.append(j);
     }
 }
 
