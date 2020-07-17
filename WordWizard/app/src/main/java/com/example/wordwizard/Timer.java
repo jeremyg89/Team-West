@@ -59,6 +59,8 @@ public class Timer extends AppCompatActivity {
                 if (millisUntilFinished >= range1 && millisUntilFinished <= range2){
                     NewGame Test = new NewGame();
                     Test.changeRow(mActivity);
+                    //code to create string from new letters correct place??
+
                     //set the variables for the next interval
                     range1 = 60000;
                     range2 = 61000;

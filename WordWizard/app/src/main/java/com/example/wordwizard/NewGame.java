@@ -305,9 +305,9 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
 }
 
 /*    //checks if random letters exists in grid table
- //   public void checkGrid(){
- //       final String Grid1 = randomLetters.toString();
- //       final String Grid2 = grid2;
+ //   public void checkGrid(Activity m){
+ //       String Grid1 = randomLetters.toString();
+ //       String Grid2 = grid2;
    //     StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.GRID_CHECK,
    //             new Response.Listener<String>() {
    //                 @Override
