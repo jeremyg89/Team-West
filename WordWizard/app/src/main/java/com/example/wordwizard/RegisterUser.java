@@ -116,8 +116,8 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     return params;
                }
           };
-          RequestQueue requestQueue = Volley.newRequestQueue(this);
-          requestQueue.add(stringRequest);
+          RequestHandler.getInstance(this).clearRequestQueue();
+          RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
      }
 
      @Override

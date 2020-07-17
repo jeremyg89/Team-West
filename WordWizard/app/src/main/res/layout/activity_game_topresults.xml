@@ -82,7 +82,7 @@
             android:id="@+id/lbl1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="YOUR RESULTS"
+            android:text="TOP GAME RESULTS"
             android:layout_marginTop="18dp"
             android:textSize="17dp"
             android:layout_centerHorizontal="true"
@@ -91,7 +91,7 @@
             android:id="@+id/lbl2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wizard Score"
+            android:text="Top Wizard Score"
             android:layout_below="@+id/lbl1"
             android:textSize="17dp"
             android:layout_centerHorizontal="true"
@@ -104,6 +104,19 @@
             android:layout_above="@id/line1"
             android:layout_marginRight="20dp"
             android:layout_alignParentRight="true"/>
+        <TextView
+            android:id="@+id/txtWizardScoreNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nickname"
+            android:layout_below="@+id/lbl2"
+            android:layout_toLeftOf="@+id/txtWizardScore"
+            android:layout_marginRight="20dp"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:textColor="#ffffff"/>
         <TextView
             android:id="@+id/txtWizardScore"
             android:layout_width="wrap_content"
@@ -132,6 +145,19 @@
             android:textSize="17dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="18dp"
+            android:textColor="#ffffff"/>
+        <TextView
+            android:id="@+id/txtLongestWordNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nickname"
+            android:layout_below="@+id/lbl3"
+            android:layout_toLeftOf="@+id/txtLongestWord"
+            android:layout_marginRight="20dp"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
             android:textColor="#ffffff"/>
         <TextView
             android:id="@+id/txtLongestWord"
@@ -170,6 +196,19 @@
             android:layout_marginTop="18dp"
             android:textColor="#ffffff"/>
         <TextView
+            android:id="@+id/txtBestScoringWordNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nickname"
+            android:layout_below="@+id/lbl4"
+            android:layout_toLeftOf="@+id/txtBestScoringWord"
+            android:layout_marginRight="20dp"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:textColor="#ffffff"/>
+        <TextView
             android:id="@+id/txtBestScoringWord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -195,18 +234,32 @@
             android:layout_marginTop="8dp"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"/>
+
         <TextView
             android:id="@+id/lbl5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Words Found"
             android:layout_below="@+id/txtBestScoringWord"
-            android:textSize="17dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="18dp"
+            android:text="Most Words"
+            android:textColor="#ffffff"
+            android:textSize="17dp" />
+        <TextView
+            android:id="@+id/txtMostWordsNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nickname"
+            android:layout_below="@+id/lbl5"
+            android:layout_toLeftOf="@+id/txtMostWords"
+            android:layout_marginRight="20dp"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
             android:textColor="#ffffff"/>
         <TextView
-            android:id="@+id/txtWordsFound"
+            android:id="@+id/txtMostWords"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="8"
@@ -225,7 +278,7 @@
             android:layout_alignParentRight="true"/>
         <View
             android:id="@+id/line4"
-            android:layout_below="@+id/txtWordsFound"
+            android:layout_below="@+id/txtMostWords"
             android:layout_width="280dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
@@ -238,15 +291,29 @@
             android:layout_below="@id/line4"
             android:layout_marginRight="20dp"
             android:layout_alignParentRight="true"/>
+
         <TextView
             android:id="@+id/lbl6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Word Point Average"
-            android:layout_below="@+id/txtWordsFound"
-            android:textSize="17dp"
+            android:layout_below="@+id/txtMostWords"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="18dp"
+            android:text="Best Word Point Average"
+            android:textColor="#ffffff"
+            android:textSize="17dp" />
+        <TextView
+            android:id="@+id/txtWordAverageNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nickname"
+            android:layout_below="@+id/lbl6"
+            android:layout_toLeftOf="@+id/txtWordAverage"
+            android:layout_marginRight="20dp"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
             android:textColor="#ffffff"/>
         <TextView
             android:id="@+id/txtWordAverage"
@@ -264,22 +331,22 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnTopScores"
+        android:id="@+id/btnPlay"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="40dp"
-        android:background="@drawable/ic_ww_btn_nav_top_scores"
+        android:background="@drawable/ic_ww_btn_nav_play"
         android:layout_below="@+id/layoutResults"
-        android:onClick="gameTopResults"/>
+        android:onClick="play"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnYourWords"
+        android:id="@+id/btnNewGame"
         android:layout_marginTop="20dp"
-        android:background="@drawable/ic_ww_btn_nav_your_words"
+        android:background="@drawable/ic_ww_btn_nav_new_game"
         android:layout_below="@+id/layoutResults"
         android:layout_marginLeft="25dp"
-        android:layout_toRightOf="@+id/btnTopScores"
-        android:onClick="yourWords"/>
+        android:layout_toRightOf="@+id/btnPlay"
+        android:onClick="newGame"/>
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"

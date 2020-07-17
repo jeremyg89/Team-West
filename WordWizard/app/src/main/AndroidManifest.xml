@@ -5,35 +5,52 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
+        android:background="@drawable/ic_ww_logo_primary_logo"
         android:icon="@drawable/ic_ww_icon_wizardhat"
         android:label="Word Wizard"
-        android:background="@drawable/ic_ww_logo_primary_logo"
         android:roundIcon="@drawable/ic_ww_icon_wizardhat"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:screenOrientation="portrait">
-        <activity android:name=".NewGame"></activity>
-        <activity android:name=".GameMenu"></activity>
-        <activity android:name=".GameResults"></activity>
-        <activity android:name=".Timer"></activity>
-        <activity android:name=".GameAffirmation"
-            android:theme="@style/AppTheme.PopAccountTheme"></activity>
-        <activity android:name=".PopAccount"
-            android:theme="@style/AppTheme.PopAccountTheme"></activity>
-        <activity android:name=".PopTutorial"
-            android:theme="@style/AppTheme.PopAccountTheme"></activity>
-        <activity android:name=".PopSignIn"
-            android:theme="@style/AppTheme.PopAccountTheme"></activity>
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/network_security_config" />
+
+        <activity android:name=".NewGame" />
+        <activity android:name=".GameMenu" />
+        <activity android:name=".GameResults" />
+        <activity android:name=".Timer" />
+        <activity android:name=".GameTopResults" />
+        <activity android:name=".YourWords" />
+        <activity
+            android:name=".GameAffirmation"
+            android:theme="@style/AppTheme.PopAccountTheme" />
+        <activity
+            android:name=".PopAccount"
+            android:theme="@style/AppTheme.PopAccountTheme" />
+        <activity
+            android:name=".PopTutorial"
+            android:theme="@style/AppTheme.PopAccountTheme" />
+        <activity
+            android:name=".PopSignIn"
+            android:theme="@style/AppTheme.PopAccountTheme" />
+        <activity
+            android:name=".PopSignOut"
+            android:theme="@style/AppTheme.PopAccountTheme" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PopUp"></activity>
-        <activity android:name=".RegisterUser"
-            android:theme="@style/AppTheme.PopAccountTheme"></activity>
+        <activity android:name=".PopUp" />
+        <activity
+            android:name=".RegisterUser"
+            android:theme="@style/AppTheme.PopAccountTheme" />
     </application>
 
 </manifest>

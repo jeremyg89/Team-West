@@ -21,17 +21,7 @@
         android:textColor="#ffffff"
         android:textSize="30dp"
         android:textStyle="bold" />
-
-    ImageButton
-        android:id="@+id/btnAccountXout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/ic_ww_btn_work_xout_disc" />
-
-    <TextView
+<TextView
         android:id="@+id/tvUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,8 +57,8 @@
         android:textSize="30dp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/txtAccountNickname"
+    <EditText
+        android:id="@+id/editAccountNickname"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvNickname"
@@ -77,20 +67,23 @@
         android:background="@drawable/ic_ww_field_name"
         android:gravity="center"
         android:text="nickname"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        />
 
     <ImageButton
+        android:id="@+id/btnEditNickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tvNickname"
-        android:layout_toRightOf="@+id/txtAccountNickname"
-        android:background="@drawable/ic_ww_icon_edit_field" />
+        android:layout_toRightOf="@+id/editAccountNickname"
+        android:background="@drawable/ic_ww_icon_edit_field"
+        />
 
     <TextView
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtAccountNickname"
+        android:layout_below="@id/editAccountNickname"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:text="ACCOUNT EMAIL"
@@ -98,8 +91,8 @@
         android:textSize="30dp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/txtAccountEmail"
+    <EditText
+        android:id="@+id/editAccountEmail"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvEmail"
@@ -111,10 +104,12 @@
         android:textSize="20dp" />
 
     <ImageButton
+        android:id="@+id/btnEditEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tvEmail"
-        android:layout_toRightOf="@+id/txtAccountEmail"
-        android:background="@drawable/ic_ww_icon_edit_field" />
+        android:layout_toRightOf="@+id/editAccountEmail"
+        android:background="@drawable/ic_ww_icon_edit_field"
+        />
 
 </RelativeLayout>

@@ -52,11 +52,11 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
     //used to store the generate word
     public static String word = "";
     public static ArrayList<String> usedwords = new ArrayList<String>();
+    public static ArrayList<Integer> wordScores = new ArrayList<Integer>();
 
 
     //Score
-    static int TotalScore = 0;
-    TextView scoreView;
+    public static int TotalScore = 0;
 
     //current word points
     static int currentPoints;
@@ -84,6 +84,14 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
 
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.newGameLayout);
         relativeLayout.setOnClickListener(this);
+
+        //reset the storage variables
+        TotalScore = 0;
+        wordCount = 0;
+        currentPoints = 0;
+        word = "";
+        usedwords.clear();
+        wordScores.clear();
 
         //popup Menu button
         ImageButton btnMenu = (ImageButton) findViewById(R.id.img_View);
@@ -212,6 +220,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
             }
         }
         Score = Score + word.length();
+        wordScores.add(Score);
         //add the new score onto the total score
         TotalScore = TotalScore + Score;
         currentPoints = Score;

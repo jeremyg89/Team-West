@@ -10,4 +10,8 @@ public class Constants {
 
     public static final String GRID_CHECK = ROOT_URL + "gridVerification.php";
 
+    public static final String URL_UPDATE_EMAIL = ROOT_URL + "updateEmail.php";
+
+    public static final String URL_UPDATE_NICKNAME = ROOT_URL + "updateNickname.php";
+
 }

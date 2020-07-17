@@ -15,7 +15,7 @@ import java.util.Locale;
 
 public class Timer extends AppCompatActivity {
 
-    private static final long START_TIME_MILLIS = 180000;
+    private static final long START_TIME_MILLIS = 20000;
     private static long TIME_LEFT_MILLIS = START_TIME_MILLIS;
 
     private static CountDownTimer countDownTimer;

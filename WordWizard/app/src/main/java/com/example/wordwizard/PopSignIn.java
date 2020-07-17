@@ -3,6 +3,7 @@ package com.example.wordwizard;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -97,27 +98,29 @@ public class PopSignIn extends AppCompatActivity implements View.OnClickListener
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-
-                            //get the values form the jsonobject
-                            //jsonObject.getJSONObject(response);
-                            id = jsonObject.getInt("id");
-                            nickname = jsonObject.getString("nickname").toString();
-                            fname = jsonObject.getString("first_name").toString();
-                            lname = jsonObject.getString("last_name").toString();
-                            email = jsonObject.getString("email").toString();
-
-                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                            if(!jsonObject.getBoolean("error")){
+                                SharedPrefManager.getInstance(getApplicationContext()).userLogin(
+                                        jsonObject.getInt("id"),
+                                        jsonObject.getString("nickname"),
+                                        jsonObject.getString("first_name"),
+                                        jsonObject.getString("last_name"),
+                                        jsonObject.getString("email"),
+                                        jsonObject.getString("is_active")
+                                );
+                                Toast.makeText(getApplicationContext(), "User Login Successful", Toast.LENGTH_LONG).show();
+                            }else{
+                                Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                         finish();
-                        Toast.makeText(getApplicationContext(), "Login successful.", Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressDialog.hide();
+                        progressDialog.dismiss();
                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }) {
@@ -130,8 +133,11 @@ public class PopSignIn extends AppCompatActivity implements View.OnClickListener
                 return params;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+        /*RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.getCache().clear();
+        requestQueue.add(stringRequest);*/
+        RequestHandler.getInstance(this).clearRequestQueue();
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
     @Override
     public void onClick(View view) {

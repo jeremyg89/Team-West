@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
 }
 public void enterGame(View v){
     //calls the NewGame activity
-    if (PopSignIn.id != 0) {
+    //if (PopSignIn.id != 0) {
+    if(SharedPrefManager.getInstance(this).isLoggedIn()){
         startActivity(new Intent(MainActivity.this, GameMenu.class));
     }else{
         Toast.makeText(getApplicationContext(), "Please sign in or register an account.", Toast.LENGTH_LONG).show();

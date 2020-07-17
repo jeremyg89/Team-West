@@ -15,15 +15,16 @@ public class GameMenu extends AppCompatActivity {
         setContentView(R.layout.activity_game_menu);
 
         TextView nickname = findViewById(R.id.txtNickname);
-        nickname.setText(PopSignIn.nickname.toString());
+        nickname.setText(SharedPrefManager.getInstance(getApplicationContext()).getNickname());
     }
     public void newGame(View v){
         //calls the NewGame activity
             startActivity(new Intent(GameMenu.this, GameAffirmation.class));
     }
     public void closeMenu(View v){
-        finish();
-        startActivity(new Intent(GameMenu.this, MainActivity.class));
+        Intent i = new Intent(getApplicationContext(), PopSignOut.class);
+        startActivity(i);
+        overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up);
     }
     public void menuAccount(View v){
         startActivity(new Intent(GameMenu.this, PopAccount.class));
