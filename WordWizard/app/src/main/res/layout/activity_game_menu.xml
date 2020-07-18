@@ -81,7 +81,8 @@
         android:padding="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:weightSum="100">
 
         <TableRow
             android:layout_width="wrap_content"
@@ -92,14 +93,16 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/ic_ww_btn_menu_play"
                 android:layout_span="1"
-                android:onClick="newGame"/>
+                android:onClick="newGame"
+                android:layout_weight="50"/>
             <Button
                 android:id="@+id/btnHighScore"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/ic_ww_btn_menu_high_scores"
                 android:layout_span="1"
-                android:onClick="menuHighScore"/>
+                android:onClick="menuHighScore"
+                android:layout_weight="50"/>
         </TableRow>
         <TableRow
             android:layout_width="wrap_content"
@@ -110,13 +113,15 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/ic_ww_btn_menu_tutorial"
                 android:layout_span="1"
-                android:onClick="menuTutorial"/>
+                android:onClick="menuTutorial"
+                android:layout_weight="50"/>
             <Button
                 android:id="@+id/btnGameStats"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/ic_ww_btn_menu_game_stats"
-                android:layout_span="1"/>
+                android:layout_span="1"
+                android:layout_weight="50"/>
         </TableRow>
         <TableRow
             android:layout_width="wrap_content"
@@ -127,13 +132,15 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/ic_ww_btn_menu_account"
                 android:layout_span="1"
-                android:onClick="menuAccount"/>
+                android:onClick="menuAccount"
+                android:layout_weight="50"/>
             <Button
                 android:id="@+id/btnGameFX"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/ic_ww_btn_menu_game_fx"
-                android:layout_span="1"/>
+                android:layout_span="1"
+                android:layout_weight="50"/>
         </TableRow>
     </TableLayout>
     <TextView
