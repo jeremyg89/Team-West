@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GameResults extends AppCompatActivity {
+public class  GameResults extends AppCompatActivity {
     String longestWord = "";
     private static Integer bestScore;
     private static String bestScoringWord;
