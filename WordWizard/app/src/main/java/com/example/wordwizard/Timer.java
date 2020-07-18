@@ -15,7 +15,7 @@ import java.util.Locale;
 
 public class Timer extends AppCompatActivity {
 
-    private static final long START_TIME_MILLIS = 180000;
+    private static final long START_TIME_MILLIS = 30000;//180000;
     private static long TIME_LEFT_MILLIS = START_TIME_MILLIS;
 
     private static CountDownTimer countDownTimer;
@@ -23,8 +23,8 @@ public class Timer extends AppCompatActivity {
     private Activity mActivity;
 
     //variables for the changerow function
-    private static int range1 = 120000;
-    private static int range2 = 121000;
+    private static int range1 = 20000;//120000;
+    private static int range2 = 21000;//121000;
 
     public Timer(Activity activity){
         super();
@@ -62,8 +62,8 @@ public class Timer extends AppCompatActivity {
                     //code to create string from new letters correct place??
 
                     //set the variables for the next interval
-                    range1 = 60000;
-                    range2 = 61000;
+                    range1 = 10000;//60000;
+                    range2 = 11000;//61000;
                 }
                 updateTimerText();
             }

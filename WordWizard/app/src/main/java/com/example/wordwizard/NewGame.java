@@ -93,6 +93,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
         currentScore = findViewById(R.id.currentScore);
         currentTimer = findViewById(R.id.currentTime);
 
+        GameResults.gameStored = false;
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.newGameLayout);
         relativeLayout.setOnClickListener(this);
 
@@ -137,7 +138,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
         grid1.trim();
         //start the timer
         progressDialog = new ProgressDialog(this);
-        GameResults.gameprogressDialog = new ProgressDialog(this);
+        //GameResults.gameprogressDialog = new ProgressDialog(this);
         new Timer(NewGame.this).createClock();
     }
 
@@ -348,12 +349,12 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
             }
         }
     }
-    public ArrayList<JSONObject> storeGrids(){
+    public void storeGrids(){
         if(grid1 != "" && grid2 != "" && grid3 != "")
         {
-
-            GameResults.gameprogressDialog.setMessage("Adding game data in...");
-            GameResults.gameprogressDialog.show();
+            gameData.clear();
+            //GameResults.gameprogressDialog.setMessage("Adding game data in...");
+            //GameResults.gameprogressDialog.show();
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.GRID_CHECK,
                     new Response.Listener<String>() {
@@ -364,8 +365,8 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
                                 JSONObject jsonObject = new JSONObject(response);
                                 if(jsonObject.getString("message").contains("Game successfully created"))
                                 {
-                                    GameResults.gameprogressDialog.setMessage("Getting game data in...");
-                                    GameResults.gameprogressDialog.show();
+                                    //GameResults.gameprogressDialog.setMessage("Getting game data in...");
+                                    //GameResults.gameprogressDialog.show();
                                     StringRequest stringRequest1 = new StringRequest(Request.Method.POST, Constants.GRID_CHECK,
                                             new Response.Listener<String>() {
                                                 @Override
@@ -373,9 +374,12 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
 
                                                     try {
                                                         JSONObject jsonObject = new JSONObject(response);
-                                                        gameData.add(jsonObject);
-                                                        GameResults.gameprogressDialog.dismiss();
-                                                        GameResults x = new GameResults();
+                                                        if (!jsonObject.getBoolean("error")) {
+                                                            SharedPrefManager.getInstance(NewGame.this).gameNumber(
+                                                                    jsonObject.getInt("Game_Number")
+                                                            );
+                                                            //GameResults.gameprogressDialog.dismiss();
+                                                        }
                                                     }
                                                     catch (JSONException e) {
                                                         e.printStackTrace();
@@ -385,7 +389,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
                                             new Response.ErrorListener() {
                                                 @Override
                                                 public void onErrorResponse(VolleyError error) {
-                                                    GameResults.gameprogressDialog.dismiss();
+                                                    //GameResults.gameprogressDialog.dismiss();
                                                 }
                                             }) {
                                         @NotNull
@@ -401,8 +405,11 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
                                     RequestHandler.getInstance(NewGame.this).clearRequestQueue();
                                     RequestHandler.getInstance(NewGame.this).addToRequestQueue(stringRequest1);
                                 }else {
-                                    //GameResults.gridData = jsonObject;
-                                    gameData.add(jsonObject);
+                                    if (!jsonObject.getBoolean("error")) {
+                                        SharedPrefManager.getInstance(NewGame.this).gameNumber(
+                                                jsonObject.getInt("Game_Number")
+                                        );
+                                    }
                                 }
                                 }
                             catch (JSONException e) {
@@ -413,7 +420,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            GameResults.gameprogressDialog.dismiss();
+                            //GameResults.gameprogressDialog.dismiss();
                             //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }) {
@@ -433,7 +440,6 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
             RequestHandler.getInstance(this).clearRequestQueue();
             RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
         }
-        return gameData;
     }
 }
 

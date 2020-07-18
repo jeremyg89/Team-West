@@ -31,6 +31,10 @@ public class SharedPrefManager {
     private static final String KEY_SCORE_LONGEST_WORD_COUNT  = "highestwordscore";
     private static final String KEY_SCORE_TIME  = "SCORETIME";
 
+    //gameResults
+    private static final String KEY_GAME_NUMBER  = "Game_Number";
+    private static final String SHARED_PREF_GAME_NUMBER = "mysharedprefgamenumber";
+
 
     private SharedPrefManager(Context context){
         mCtx = context;
@@ -52,6 +56,16 @@ public class SharedPrefManager {
         editor.putString(KEY_FNAME, first_name);
         editor.putString(KEY_LNAME, last_name);
         editor.putString(KEY_ISACTIVE, is_active);
+
+        editor.apply();
+
+        return true;
+    }
+    public boolean gameNumber(int gameNum) {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_GAME_NUMBER, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt(KEY_GAME_NUMBER, gameNum);
 
         editor.apply();
 
@@ -111,5 +125,9 @@ public class SharedPrefManager {
 
         editor.putString(KEY_NICKNAME, nickname);
         editor.apply();
+    }
+    public int getGameNumber(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_GAME_NUMBER, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(KEY_GAME_NUMBER, 0);
     }
 }

@@ -5,16 +5,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
 public class YourWords extends AppCompatActivity {
+    TextView gameNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_your_words);
+        gameNumber = findViewById(R.id.txtwordGameNumber);
+        gameNumber.setText(Integer.toString(SharedPrefManager.getInstance(getApplicationContext()).getGameNumber()));
         populateList();
     }
     public void populateList(){

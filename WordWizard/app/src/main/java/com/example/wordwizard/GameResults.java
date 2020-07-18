@@ -31,8 +31,11 @@ public class GameResults extends AppCompatActivity {
     private static Integer bestScore;
     private static String bestScoringWord;
     public static ProgressDialog gameprogressDialog;
+    TextView txtGameNumber;
+    public static boolean gameStored = false;
 
     public static ArrayList<JSONObject> gridData = new ArrayList<JSONObject>();
+    public static int gameNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,10 @@ public class GameResults extends AppCompatActivity {
         longestWord = findLongestWord();
         TextView txtLongestWord = findViewById(R.id.txtLongestWord);
         txtLongestWord.setText(longestWord);
+
+        //number of words used
+        txtGameNumber = findViewById(R.id.txtGameNumber);
+        //txtGameNumber.setText(SharedPrefManager.getInstance(GameResults.this).getGameNumber());
 
         //number of words used
         TextView txtUsedWords = findViewById(R.id.txtWordsFound);
@@ -65,8 +72,6 @@ public class GameResults extends AppCompatActivity {
 
         NewGame x = new NewGame();
         x.storeGrids();
-
-        gridData = NewGame.gameData;
     }
     @Override
     protected void onResume()
@@ -76,11 +81,8 @@ public class GameResults extends AppCompatActivity {
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
-                try {
-                    registerResults(gridData.get(0).getInt("Game_Number"));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                    txtGameNumber.setText(Integer.toString(SharedPrefManager.getInstance(GameResults.this).getGameNumber()));
+                    registerResults();
             }
         },500);
     }
@@ -129,57 +131,59 @@ public class GameResults extends AppCompatActivity {
         Intent i = new Intent(GameResults.this, GameTopResults.class);
         startActivity(i);
     }
-    public void registerResults(int game_id) throws JSONException {
-        final String userID = Integer.toString(SharedPrefManager.getInstance(getApplicationContext()).getID());
-        final String gameID = Integer.toString(game_id);
-        final String highest_word_score = Integer.toString(bestScore);
-        final String highest_game_score = Integer.toString(NewGame.TotalScore);
-        final String longest_word = findLongestWord();
-        final String longest_word_count = Integer.toString(NewGame.usedwords.size());
-        final String word_average = Double.toString(findPointAverage());
+    public void registerResults() {
+        if (gameStored == false) {
+            final String userID = Integer.toString(SharedPrefManager.getInstance(getApplicationContext()).getID());
+            final String gameID = Integer.toString(SharedPrefManager.getInstance(getApplicationContext()).getGameNumber());
+            final String highest_word_score = Integer.toString(bestScore);
+            final String highest_game_score = Integer.toString(NewGame.TotalScore);
+            final String longest_word = findLongestWord();
+            final String longest_word_count = Integer.toString(NewGame.usedwords.size());
+            final String word_average = Double.toString(findPointAverage());
 
-        //final String IsActive = editTextIsactive.getText().toString().trim();
+            //final String IsActive = editTextIsactive.getText().toString().trim();
 
-        gameprogressDialog.setMessage("Registering Results...");
-        gameprogressDialog.show();
+            gameprogressDialog.setMessage("Registering Results...");
+            gameprogressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_INSERT_SCORE_DATA,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        gameprogressDialog.dismiss();
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_INSERT_SCORE_DATA,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            gameprogressDialog.dismiss();
 
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-
-                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                gameStored = true;
+                                Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        gameprogressDialog.hide();
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                }) {
-            @NotNull
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("userID", userID);
-                params.put("gameID", gameID);
-                params.put("highest_word_score", highest_word_score);
-                params.put("highest_game_score", highest_game_score);
-                params.put("longest_word", longest_word);
-                params.put("longest_word_count", longest_word_count);
-                params.put("word_average", word_average);
-                return params;
-            }
-        };
-        RequestHandler.getInstance(this).clearRequestQueue();
-        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            gameprogressDialog.hide();
+                            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }) {
+                @NotNull
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("userID", userID);
+                    params.put("gameID", gameID);
+                    params.put("highest_word_score", highest_word_score);
+                    params.put("highest_game_score", highest_game_score);
+                    params.put("longest_word", longest_word);
+                    params.put("longest_word_count", longest_word_count);
+                    params.put("word_average", word_average);
+                    return params;
+                }
+            };
+            RequestHandler.getInstance(this).clearRequestQueue();
+            RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+        }
     }
 }
