@@ -11,6 +11,7 @@ public class SharedPrefManager {
     private static SharedPrefManager mInstance;
     private static Context mCtx;
 
+    //keys for user information
     private static final String SHARED_PREF_NAME = "mysharedpref1";
     private static final String KEY_ID = "userid";
     private static final String KEY_NICKNAME = "nickname";
@@ -18,6 +19,18 @@ public class SharedPrefManager {
     private static final String KEY_LNAME = "lastname";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_ISACTIVE = "active";
+
+    //keys for score information
+    private static final String SHARED_PREF_SCORE_NAME = "mysharedprefscores";
+    private static final String KEY_SCORE_ID  = "scoreid";
+    private static final String KEY_SCORE_USERID  = "userid";
+    private static final String KEY_SCORE_GAMEID  = "gameid";
+    private static final String KEY_SCORE_HIGHEST_WORD_SCORE  = "highestwordscore";
+    private static final String KEY_SCORE_HIGHEST_GAME_SCORE  = "highestgamescore";
+    private static final String KEY_SCORE_LONGEST_WORD  = "longestword";
+    private static final String KEY_SCORE_LONGEST_WORD_COUNT  = "highestwordscore";
+    private static final String KEY_SCORE_TIME  = "SCORETIME";
+
 
     private SharedPrefManager(Context context){
         mCtx = context;

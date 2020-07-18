@@ -2,6 +2,7 @@ package com.example.wordwizard;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -92,8 +93,13 @@ public class PopAccount extends AppCompatActivity implements View.OnClickListene
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        if(response.contains("\"error\":true"))
+                        {
+
+                        }else {
                         Toast.makeText(getApplicationContext(), "Email updated successfully.", Toast.LENGTH_LONG).show();
                         SharedPrefManager.getInstance(PopAccount.this).updateEmail(Email);
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -142,8 +148,13 @@ public class PopAccount extends AppCompatActivity implements View.OnClickListene
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        Toast.makeText(getApplicationContext(), "Nickname updated successful.", Toast.LENGTH_LONG).show();
-                        SharedPrefManager.getInstance(PopAccount.this).updateNickname(Nickname);
+                        if(response.contains("\"error\":true"))
+                        {
+
+                        }else {
+                            Toast.makeText(getApplicationContext(), "Nickname updated successful.", Toast.LENGTH_LONG).show();
+                            SharedPrefManager.getInstance(PopAccount.this).updateNickname(Nickname);
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -185,6 +196,10 @@ public class PopAccount extends AppCompatActivity implements View.OnClickListene
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Intent x = new Intent(PopAccount.this, GameMenu.class);
+        x.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        x.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(x);
         finish();
     }
 }

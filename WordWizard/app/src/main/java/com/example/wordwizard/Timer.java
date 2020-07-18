@@ -15,7 +15,7 @@ import java.util.Locale;
 
 public class Timer extends AppCompatActivity {
 
-    private static final long START_TIME_MILLIS = 20000;
+    private static final long START_TIME_MILLIS = 180000;
     private static long TIME_LEFT_MILLIS = START_TIME_MILLIS;
 
     private static CountDownTimer countDownTimer;
@@ -72,9 +72,6 @@ public class Timer extends AppCompatActivity {
             public void onFinish() {
                 //need to add the endgame view or call here
                 Intent startIntent = new Intent(mActivity,  GameResults.class);
-
-                //code to insert scores in DB and display
-
 
                 startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

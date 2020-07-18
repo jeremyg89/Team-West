@@ -1,18 +1,38 @@
 package com.example.wordwizard;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameResults extends AppCompatActivity {
     String longestWord = "";
     private static Integer bestScore;
     private static String bestScoringWord;
+    public static ProgressDialog gameprogressDialog;
+
+    public static ArrayList<JSONObject> gridData = new ArrayList<JSONObject>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +60,29 @@ public class GameResults extends AppCompatActivity {
         //Get and display the average point values
         TextView txtAveragePoints = findViewById(R.id.txtWordAverage);
         txtAveragePoints.setText(Double.toString(findPointAverage()));
+
+        gameprogressDialog = new ProgressDialog(this);
+
+        NewGame x = new NewGame();
+        x.storeGrids();
+
+        gridData = NewGame.gameData;
+    }
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        Handler h = new Handler();
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    registerResults(gridData.get(0).getInt("Game_Number"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },500);
     }
     public void closeResults(View v){
         finish();
@@ -85,5 +128,58 @@ public class GameResults extends AppCompatActivity {
     public void gameTopResults(View v){
         Intent i = new Intent(GameResults.this, GameTopResults.class);
         startActivity(i);
+    }
+    public void registerResults(int game_id) throws JSONException {
+        final String userID = Integer.toString(SharedPrefManager.getInstance(getApplicationContext()).getID());
+        final String gameID = Integer.toString(game_id);
+        final String highest_word_score = Integer.toString(bestScore);
+        final String highest_game_score = Integer.toString(NewGame.TotalScore);
+        final String longest_word = findLongestWord();
+        final String longest_word_count = Integer.toString(NewGame.usedwords.size());
+        final String word_average = Double.toString(findPointAverage());
+
+        //final String IsActive = editTextIsactive.getText().toString().trim();
+
+        gameprogressDialog.setMessage("Registering Results...");
+        gameprogressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_INSERT_SCORE_DATA,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        gameprogressDialog.dismiss();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        gameprogressDialog.hide();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @NotNull
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("userID", userID);
+                params.put("gameID", gameID);
+                params.put("highest_word_score", highest_word_score);
+                params.put("highest_game_score", highest_game_score);
+                params.put("longest_word", longest_word);
+                params.put("longest_word_count", longest_word_count);
+                params.put("word_average", word_average);
+                return params;
+            }
+        };
+        RequestHandler.getInstance(this).clearRequestQueue();
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 }

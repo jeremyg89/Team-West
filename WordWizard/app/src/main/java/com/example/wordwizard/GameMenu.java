@@ -32,4 +32,7 @@ public class GameMenu extends AppCompatActivity {
     public void menuTutorial(View v){
         startActivity(new Intent(GameMenu.this, PopTutorial.class));
     }
+    public void menuHighScore(View v){
+        startActivity(new Intent(GameMenu.this, PlayerRanks.class));
+    }
 }

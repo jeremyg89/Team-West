@@ -14,4 +14,8 @@ public class Constants {
 
     public static final String URL_UPDATE_NICKNAME = ROOT_URL + "updateNickname.php";
 
+    public static final String URL_SCORE_DATA = ROOT_URL + "getScoreData.php";
+
+    public static final String URL_INSERT_SCORE_DATA = ROOT_URL + "insertScoreData.php";
+
 }

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/ic_ww_plat_deep_blue">
+    <Button
+        android:id="@+id/txtLeaderboardXout"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/ic_ww_btn_work_xout_disc"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"/>
+    <TextView
+        android:id="@+id/lbl1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_ww_logo_primary_logo"
+        android:layout_below="@id/txtLeaderboardXout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lbl1"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:background="#ffffff"
+        android:layout_centerHorizontal="true"
+        >
+        <LinearLayout
+            android:id="@+id/rlayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:id="@+id/btnPlayerRanks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="1dp"
+                android:text="Player Ranks"
+                android:textColor="#ffffff"
+                android:background="#c7972e"/>
+
+            <Button
+                android:id="@+id/btnLeaderboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@id/btnPlayerRanks"
+                android:text="Leaderboard"
+                android:textColor="#ffffff"
+                android:background="#c7972e"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/rlayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlayout1"
+            android:background="#ffffff"
+            android:layout_centerHorizontal="true"
+            android:weightSum="100">
+
+            <Button
+                android:id="@+id/btnLastMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="33"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="1dp"
+                android:text="Last Month"
+                android:textColor="#ffffff"
+                android:background="#c7972e"/>
+
+            <Button
+                android:id="@+id/btnThisMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="33"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@id/btnLastMonth"
+                android:text="This Month"
+                android:textColor="#ffffff"
+                android:background="#c7972e"/>
+
+            <Button
+                android:id="@+id/btnAllTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="33"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@id/btnThisMonth"
+                android:text="All Time"
+                android:textColor="#ffffff"
+                android:background="#c7972e"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/rlayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlayout2"
+            android:background="#ffffff"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:id="@+id/lblTimeLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time Left:"
+                android:background="#ffffff" />
+            <TextView
+                android:id="@+id/txtTimeLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="02:23:06"
+                android:background="#ffffff"
+                android:layout_toRightOf="@+id/lblTimeLeft"/>
+            <TextView
+                android:id="@+id/lblGMT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="GMT"
+                android:background="#ffffff"
+                android:layout_toRightOf="@+id/txtTimeLeft"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlayout3"
+            android:background="#ffffff"
+            android:layout_centerHorizontal="true"
+            >
+            <LinearLayout
+                android:id="@+id/rlayout5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="100"
+                android:layout_centerHorizontal="true">
+
+                <Button
+                    android:id="@+id/btnTotalScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="33"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="1dp"
+                    android:text="Total Score"
+                    android:textColor="#ffffff"
+                    android:background="#3c4d87"/>
+
+                <Button
+                    android:id="@+id/btnTopScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="33"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_toRightOf="@id/btnTotalScore"
+                    android:text="Top Score"
+                    android:textColor="#ffffff"
+                    android:background="#3c4d87"/>
+
+                <Button
+                    android:id="@+id/btnWordLength"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="33"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_toRightOf="@id/btnTopScore"
+                    android:text="word length"
+                    android:textColor="#ffffff"
+                    android:background="#3c4d87"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/rlayout6"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlayout5"
+                android:weightSum="100"
+                android:background="#ffffff"
+                android:layout_centerHorizontal="true">
+
+                <Button
+                    android:id="@+id/btnWordValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="33"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="1dp"
+                    android:text="word value"
+                    android:textColor="#ffffff"
+                    android:background="#3c4d87"/>
+
+                <Button
+                    android:id="@+id/btnWordCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="33"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_toRightOf="@id/btnWordValue"
+                    android:text="word count"
+                    android:textColor="#ffffff"
+                    android:background="#3c4d87"/>
+
+                <Button
+                    android:id="@+id/btnWordAverage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="33"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_toRightOf="@id/btnWordCount"
+                    android:text="word average"
+                    android:textColor="#ffffff"
+                    android:background="#3c4d87"/>
+            </LinearLayout>
+            <ListView
+                android:id="@+id/listPlayerResults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlayout6"
+                android:background="#ffffff"
+                android:layout_marginBottom="20dp"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

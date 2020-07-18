@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -44,6 +46,7 @@ import java.util.Map;
 
 public class NewGame extends AppCompatActivity implements View.OnClickListener {
     private static Activity activity;
+    private ProgressDialog progressDialog;
     //string array to hold the random letters
     public static String[] randomLetters = new String[16];
     private static final int NUM_ROWS = 4;
@@ -71,6 +74,14 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
     public static TextView currentTimer;
     public static TextView currentScore;
 
+    //string variables to store the grids
+    public static String grid1 = "";
+    public static String grid2 = "";
+    public static String grid3 = "";
+
+    //arraylist to store the game information
+    public static ArrayList<JSONObject> gameData = new ArrayList<JSONObject>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +103,9 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
         word = "";
         usedwords.clear();
         wordScores.clear();
+        grid1 = "";
+        grid2 = "";
+        grid3 = "";
 
         //popup Menu button
         ImageButton btnMenu = (ImageButton) findViewById(R.id.img_View);
@@ -114,7 +128,16 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
         });*/
         populateGrid();
 
+        //store the first grid
+
+        for (int i = 0; i < randomLetters.length; i++)
+        {
+            grid1 = grid1 + randomLetters[i];
+        }
+        grid1.trim();
         //start the timer
+        progressDialog = new ProgressDialog(this);
+        GameResults.gameprogressDialog = new ProgressDialog(this);
         new Timer(NewGame.this).createClock();
     }
 
@@ -260,6 +283,7 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
     public void changeRow(Activity m) {
         //clear the content prior to resetting
         word = "";
+        wordCount = 0;
         currentWord.setText(word);
         for (int i = 0; i < 16; i++) {
             Button btn = m.findViewById(i);
@@ -310,6 +334,106 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
                 }
                 break;
         }
+        if (grid2 == ""){
+            for (int z = 0; z < randomLetters.length; z++)
+            {
+                grid2 = grid2 + randomLetters[z];
+            }
+        }
+        else if (grid3 == "")
+        {
+            for (int z = 0; z < randomLetters.length; z++)
+            {
+                grid3 = grid3 + randomLetters[z];
+            }
+        }
+    }
+    public ArrayList<JSONObject> storeGrids(){
+        if(grid1 != "" && grid2 != "" && grid3 != "")
+        {
+
+            GameResults.gameprogressDialog.setMessage("Adding game data in...");
+            GameResults.gameprogressDialog.show();
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.GRID_CHECK,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                if(jsonObject.getString("message").contains("Game successfully created"))
+                                {
+                                    GameResults.gameprogressDialog.setMessage("Getting game data in...");
+                                    GameResults.gameprogressDialog.show();
+                                    StringRequest stringRequest1 = new StringRequest(Request.Method.POST, Constants.GRID_CHECK,
+                                            new Response.Listener<String>() {
+                                                @Override
+                                                public void onResponse(String response) {
+
+                                                    try {
+                                                        JSONObject jsonObject = new JSONObject(response);
+                                                        gameData.add(jsonObject);
+                                                        GameResults.gameprogressDialog.dismiss();
+                                                        GameResults x = new GameResults();
+                                                    }
+                                                    catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            },
+                                            new Response.ErrorListener() {
+                                                @Override
+                                                public void onErrorResponse(VolleyError error) {
+                                                    GameResults.gameprogressDialog.dismiss();
+                                                }
+                                            }) {
+                                        @NotNull
+                                        @Override
+                                        protected Map<String, String> getParams() throws AuthFailureError {
+                                            Map<String, String> params = new HashMap<>();
+                                            params.put("First_Grid_Letters", grid1);
+                                            params.put("Second_Grid_Letters", grid2);
+                                            params.put("Third_Grid_Letters", grid3);
+                                            return params;
+                                        }
+                                    };
+                                    RequestHandler.getInstance(NewGame.this).clearRequestQueue();
+                                    RequestHandler.getInstance(NewGame.this).addToRequestQueue(stringRequest1);
+                                }else {
+                                    //GameResults.gridData = jsonObject;
+                                    gameData.add(jsonObject);
+                                }
+                                }
+                            catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            GameResults.gameprogressDialog.dismiss();
+                            //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }) {
+                @NotNull
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("First_Grid_Letters", grid1);
+                    params.put("Second_Grid_Letters", grid2);
+                    params.put("Third_Grid_Letters", grid3);
+                    return params;
+                }
+            };
+        /*RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.getCache().clear();
+        requestQueue.add(stringRequest);*/
+            RequestHandler.getInstance(this).clearRequestQueue();
+            RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+        }
+        return gameData;
     }
 }
 

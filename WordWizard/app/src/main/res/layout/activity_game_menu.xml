@@ -98,7 +98,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/ic_ww_btn_menu_high_scores"
-                android:layout_span="1"/>
+                android:layout_span="1"
+                android:onClick="menuHighScore"/>
         </TableRow>
         <TableRow
             android:layout_width="wrap_content"
