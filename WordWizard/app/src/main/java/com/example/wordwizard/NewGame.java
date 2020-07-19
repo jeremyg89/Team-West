@@ -181,7 +181,8 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
                             btn.setBackgroundResource(R.drawable.ic_ww_field_tile_a);
                         }
                     }
-
+                }else{
+                    click = 0;
                 }
                     click = 0;
 
