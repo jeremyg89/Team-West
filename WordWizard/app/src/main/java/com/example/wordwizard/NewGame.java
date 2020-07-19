@@ -183,9 +183,10 @@ public class NewGame extends AppCompatActivity implements View.OnClickListener {
                     }
 
                 }
-                click = 0;
+                    click = 0;
+
             }
-        }, 165);
+        }, 171);
 
     }
 
