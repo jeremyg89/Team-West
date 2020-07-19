@@ -22,7 +22,6 @@
         <activity android:name=".NewGame" />
         <activity android:name=".GameMenu" />
         <activity android:name=".GameResults" />
-        <activity android:name=".Timer" />
         <activity android:name=".GameTopResults" />
         <activity android:name=".YourWords" />
         <activity android:name=".PlayerRanks"/>
