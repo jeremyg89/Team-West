@@ -26,6 +26,7 @@ import org.json.JSONObject;
 
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -263,13 +264,16 @@ public class PlayerRanks extends AppCompatActivity implements View.OnClickListen
     public void loadList(String s){
             ArrayList<FillScoreList> rank = new ArrayList<FillScoreList>();
             try {
+                DecimalFormat df2 = new DecimalFormat("#.##");
+                Double tempDouble;
                 rank.add(new FillScoreList("Rank", "Player", "Score"));
                 for (int i = 0; i < users.size(); i++) {
                     if(s == "longest_word")
                     {
                         rank.add(new FillScoreList(Integer.toString(i + 1), users.get(i).getString("nickname"), users.get(i).getString(s)));
                     }else if(s == "word_average"){
-                        rank.add(new FillScoreList(Integer.toString(i + 1), users.get(i).getString("nickname"), Double.toString(users.get(i).getDouble(s))));
+                        tempDouble = users.get(i).getDouble(s);
+                        rank.add(new FillScoreList(Integer.toString(i + 1), users.get(i).getString("nickname"), df2.format(tempDouble)));
                     }
                     else {
                         rank.add(new FillScoreList(Integer.toString(i + 1), users.get(i).getString("nickname"), Integer.toString(users.get(i).getInt(s))));

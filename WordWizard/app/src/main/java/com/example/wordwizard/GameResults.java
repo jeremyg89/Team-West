@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -65,8 +66,10 @@ public class  GameResults extends AppCompatActivity {
         txtBestScore.setText(bestScoringWord);
 
         //Get and display the average point values
+        DecimalFormat df2 = new DecimalFormat("0.00");
         TextView txtAveragePoints = findViewById(R.id.txtWordAverage);
-        txtAveragePoints.setText(Double.toString(findPointAverage()));
+        Double tempDouble = findPointAverage();
+        txtAveragePoints.setText(df2.format(tempDouble));
 
         gameprogressDialog = new ProgressDialog(this);
 
@@ -116,6 +119,7 @@ public class  GameResults extends AppCompatActivity {
     private double findPointAverage(){
         double totalPoints = 0;
         double totalWords = 0;
+        DecimalFormat df2 = new DecimalFormat("#.##");
 
         for(int i = 0; i < NewGame.wordScores.size();i++){
             totalPoints = totalPoints + NewGame.wordScores.get(i);
